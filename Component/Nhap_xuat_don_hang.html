@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <p>Nhập/xuất đơn hàng</p>
+    <input type="radio" name="chedo" id="nhap">
+    <label for="nhap">Nhập</label>
+    <input type="radio" name="chedo" id="xuat">
+    <label for="xuat">Xuất</label>
+    <!--Lấy các mã kho hàng do quản lí đang quản lí-->
+    <label for="kho-hang"></label>
+    <select name="makhohang" id="kho-hang">
+        <option value="Makho1">Kho hàng 1</option>
+        <option value="Makho2">Kho hàng 2</option>
+    </select>
+    <label for="ngay-lap">Ngày lập đơn</label>
+    <input type="date" name="ngaylap" id="ngay-lap">
+    <!--lấy người đang đăng nhập làm người lập đơn-->
+    <label for="ngay-nhap">Ngày nhập hàng</label>
+    <input type="date" name="ngaynhap" id="ngay-nhap">
+    <!--Nhập hàng hoá, lấy module nhập hàng hoá ra gắn vào-->
+    <label for="tong-so-mon-hang">Tổng số món hàng</label>
+    <input type="number" name="tongsohang" id="tong-so-mon-hang">
+    <!--Chỉ tạo mẫu cho 1 món hàng-->
+    <label for="ma-loai-hang">Mã loại hàng</label>
+    <select name="maloaihang" id="ma-loai-hang">
+        <option value="Maloai1">Mì kokomi</option>
+        <option value="Maloai2">Bút bi thiên long</option>
+    </select>
+    <label for="so-luong">Số lượng</label>
+    <input type="number" name="soluong" id="so-luong">
+    <label for="don-gia-nhap">Đơn giá nhập</label>
+    <input type="number" name="dongianhao" id="don-gia-nhap">
+    <label for="ngay-het-han">Ngày hết hạn</label>
+    <input type="date" id="ngay-het-han" name='ngayhethan'>
+</body>
+</html>
