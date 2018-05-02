@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Báo cáo</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Báo cáo</legend>
+        <form>
+            <!--Chọn khoảng thời gian cần tạo báo cáo-->
+            <input type="radio" name="thoi_gian" value="ngay">
+            <span>Ngày</span>
+            <br>
+            <input type="radio" name="thoi_gian" value="thang">
+            <span>Tháng</span>
+            <br>
+            <input type="radio" name="thoi_gian" value="qui">
+            <span>Quí</span>
+            <br>
+            <input type="radio" name="thoi_gian" value="nam">
+            <span>Năm</span>
+            <br>
+            <!--Tùy chọn khoảng thời gian-->
+            <input type="radio" name="thoi_gian" value="tuychon">
+            <span>Tùy chọn:</span>
+            <br>
+            <div>
+                Ngày bắt đầu:
+                <input type="date" name="ngay_bat_dau">
+                <br> Ngày kết thúc:
+                <input type="date" name="ngay_ket_thuc">
+            </div>
+            <input type="submit" value="Tạo">
+        </form>
+        <!--Sau khi chọn xong bấm "Tạo" sẽ ra thông tin bên dưới-->
+        <h2>Nhập</h2>
+        <table>
+            <tr>
+                <th>STT</th>
+                <th>Hàng hóa</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Mì Hảo Hảo thùng</td>
+                <td>5</td>
+                <td>40000</td>
+                <td>200000</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Bia 333 thùng</td>
+                <td>10</td>
+                <td>200000</td>
+                <td>2000000</td>
+            </tr>
+            <tr>
+                <td colspan="4">Tổng:</td>
+                <td>2200000</td>
+            </tr>
+        </table>
+        <h2>Xuất</h2>
+        <table>
+            <tr>
+                <th>STT</th>
+                <th>Hàng hóa</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Mì Hảo Hảo thùng</td>
+                <td>5</td>
+                <td>40000</td>
+                <td>200000</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Bia 333 thùng</td>
+                <td>10</td>
+                <td>200000</td>
+                <td>2000000</td>
+            </tr>
+            <tr>
+                <td colspan="4">Tổng:</td>
+                <td>2200000</td>
+            </tr>
+        </table>
+
+    </fieldset>
+</body>
+
+</html>

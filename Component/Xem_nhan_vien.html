@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Xem nhân viên</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Xem danh sách nhân viên</legend>
+        <form>
+            <button type="button">Chỉnh sửa</button>
+            <table>
+                <tr>
+                    <th>STT</th>
+                    <th>Họ tên</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Chức vụ</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>nva@gmail.com</td>
+                    <td>0965299865</td>
+                    <td>Quản lý</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lê Thị B</td>
+                    <td>ltb@gmail.com</td>
+                    <td>0965299865</td>
+                    <td>Nhân viên</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text" name="ten_moi"></td>
+                    <td><input type="text" name="email_moi"></td>
+                    <td><input type="text" name="sdt_moi"></td>
+                    <td><select name="chucvu_moi">
+                        <option>Quản lý</option>
+                        <option>Nhân viên</option>
+                    </td>
+                    <td><input type="submit" value="Thêm"></td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+</body>
+
+</html>

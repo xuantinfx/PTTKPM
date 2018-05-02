@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thống kê</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Thống kê</legend>
+        <form>
+            <!--Chọn khoảng thời gian cần tạo thống kê-->
+            <input type="radio" name="thoi_gian" value="ngay">
+            <span>Ngày</span>
+            <br>
+            <input type="radio" name="thoi_gian" value="thang">
+            <span>Tháng</span>
+            <br>
+            <input type="radio" name="thoi_gian" value="qui">
+            <span>Quí</span>
+            <br>
+            <input type="radio" name="thoi_gian" value="nam">
+            <span>Năm</span>
+            <br>
+            <!--Tùy chọn khoảng thời gian-->
+            <input type="radio" name="thoi_gian" value="tuychon">
+            <span>Tùy chọn:</span>
+            <br>
+            <div>
+                Ngày bắt đầu:
+                <input type="date" name="ngay_bat_dau">
+                <br> Ngày kết thúc:
+                <input type="date" name="ngay_ket_thuc">
+            </div>
+            <input type="submit" value="Tạo">
+        </form>
+        <!--Sau khi chọn xong bấm "Tạo" sẽ ra thông tin bên dưới-->
+        <h2>Nhập</h2>
+        <div>Xài google chart chỗ này :v</div>
+        <h2>Xuất</h2>
+        <div>Xài google chart chỗ này :v</div>
+    </fieldset>
+</body>
+
+</html>
