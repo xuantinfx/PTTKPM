@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Nhân viên</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h3>Danh sách nhân viên</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Tên nhân viên</th>
+                    <th scope="col">Kho làm việc</th>
+                    <th scope="col">Vai trò</th>
+                    <th scope="col">Xem chi tiết</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>xuantinfx</td>
+                    <td>Đào Xuân Tin</td>
+                    <td>
+                        <form action="">
+                            <div class="form-group">
+                                <select class="form-control" name="vitrilamviec" id="">
+                                    <option selected>Shop Hoa Nguyễn Đình Chiểu</option>
+                                    <option>Family Mart Bình Thạnh</option>
+                                    <option>{Không}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="">
+                            <div class="form-group">
+                                <select class="form-control" name="quyen" id="">
+                                    <option selected>Quản Lý</option>
+                                    <option>Nhân Viên</option>
+                                    <option>{Không}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="#">Truy cập trang thông tin</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>nhannguyen</td>
+                    <td>Nguyễn Phước Đồng Nhân</td>
+                    <td>
+                        <form action="">
+                            <div class="form-group">
+                                <select class="form-control" name="vitrilamviec" id="">
+                                    <option>Shop Hoa Nguyễn Đình Chiểu</option>
+                                    <option selected>Family Mart Bình Thạnh</option>
+                                    <option>{Không}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="">
+                            <div class="form-group">
+                                <select class="form-control" name="quyen" id="">
+                                    <option>Quản Lý</option>
+                                    <option selected>Nhân Viên</option>
+                                    <option>{Không}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="#">Truy cập trang thông tin</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-success btn-block" onclick="themFormNhanVien()">Thêm nhân viên</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- Optional JavaScript -->
+    <script>
+        function themFormNhanVien() {
+            let listTd = document.getElementsByTagName('tbody');
+            let temp = document.createElement('tr');
+            temp.innerHTML =
+                `<th scope="row">${listTd[0].children.length}</th>
+            <td>
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" name="" id="tennhanvien" class="form-control" value='' placeholder='Nhập username nhân viên' >
+                    </div>
+                </form>
+            </td>
+            <td>
+            </td>
+            <td>
+                <form action="">
+                    <div class="form-group">
+                        <select class="form-control" name="vitrilamviec" id="">
+                            <option>Shop Hoa Nguyễn Đình Chiểu</option>
+                            <option>Family Mart Bình Thạnh</option>
+                            <option selected>{Không}</option>
+                        </select>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form action="">
+                    <div class="form-group">
+                        <select class="form-control" name="quyen" id="">
+                            <option>Quản Lý</option>
+                            <option>Nhân Viên</option>
+                            <option selected>{Không}</option>
+                        </select>
+                    </div>
+                </form>
+            </td>`;
+            listTd[0].appendChild(temp);
+            listTd[0].removeChild(listTd[0].children[listTd[0].children.length - 2])
+            let temp2 = document.createElement('tr');
+            temp2.innerHTML =
+                `<td></td>
+            <td>
+                <button class="btn btn-success btn-block" onclick="themNhanVien()">Xác nhận</button>
+            </td>`
+            listTd[0].appendChild(temp2)
+        }
+        function themNhanVien(){
+            //gọi axas để đẩy dữ liệu về server
+        }
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
