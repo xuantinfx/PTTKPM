@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <title>Báo cáo</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card row">
+            <h4 class="card-header">
+                Báo cáo
+            </h4>
+            <div class="card-body">
+                <form>
+                    <!--Form group dành cho ngày tháng-->
+                    <div class="form-group">
+                        <!--Chọn khoảng thời gian cần tạo báo cáo-->
+                        <input type="radio" name="thoi_gian" value="ngay">
+                        <span>Ngày</span>
+                        <br>
+                        <input type="radio" name="thoi_gian" value="thang">
+                        <span>Tháng</span>
+                        <br>
+                        <input type="radio" name="thoi_gian" value="qui">
+                        <span>Quí</span>
+                        <br>
+                        <input type="radio" name="thoi_gian" value="nam">
+                        <span>Năm</span>
+                        <br>
+                        <!--Tùy chọn khoảng thời gian-->
+                        <input type="radio" name="thoi_gian" value="tuychon">
+                        <span>Tùy chọn:</span>
+                        <br>
+                    </div>
+                    <!--form group dành cho phần tùy chọn ngày tháng-->
+                    <div class="form-group row" style="margin-bottom:0;">
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" style="font-size: 0.8em;">Ngày bắt đầu</label>
+                            </div>
+                            <input type="date" name="ngay_bat_dau">
+                        </div>
+                        <div class="input-group mb-3 col-4">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" style="font-size: 0.8em;">Ngày kết thúc</label>
+                            </div>
+                            <input type="date" name="ngay_bat_dau">
+                        </div>
+                    </div>
+                    <!--Form group dành cho nút tạo-->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-md">Tạo báo cáo</button>
+                    </div>
+                </form>
+                <!--Báo cáo nhập-->
+                <h5>Nhập</h5>
+                <table class="table">
+                    <tr>
+                        <th>STT</th>
+                        <th>Hàng hóa</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mì Hảo Hảo thùng</td>
+                        <td>5</td>
+                        <td>40000</td>
+                        <td>200000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Bia 333 thùng</td>
+                        <td>10</td>
+                        <td>200000</td>
+                        <td>2000000</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Tổng:</td>
+                        <td>2200000</td>
+                    </tr>
+                </table>
+                <!--Báo cáo xuất-->
+                <h5>Xuất</h5>
+                <table class="table">
+                    <tr>
+                        <th>STT</th>
+                        <th>Hàng hóa</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Mì Hảo Hảo thùng</td>
+                        <td>5</td>
+                        <td>40000</td>
+                        <td>200000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Bia 333 thùng</td>
+                        <td>10</td>
+                        <td>200000</td>
+                        <td>2000000</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Tổng:</td>
+                        <td>2200000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!--script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
