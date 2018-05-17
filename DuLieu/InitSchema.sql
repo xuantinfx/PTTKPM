@@ -1,8 +1,8 @@
-USE sys;
+-- CREATE DATABASE Kho;
 
-CREATE DATABASE Kho;
+-- tuy chay database nao ma se sua USE db nao
 
-USE Kho;
+USE khohancuaban;
 
 CREATE TABLE NguoiDung (
 	maNguoiDung VARCHAR(10),
