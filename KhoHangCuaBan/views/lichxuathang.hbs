@@ -1,0 +1,109 @@
+
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    <b>Lịch xuất hàng trong</b>
+                                </label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option value="1">Ngày</option>
+                                <option value="2">Tuần</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Mã đơn hàng</th>
+                            <th scope="col">Ngày xuât</th>
+                            <th scope="col">Tên mặt hàng</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Đã xuât hàng</th>
+                            <th scope="col">Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <!--Nếu có trường đã dành 3 hàng thì 2 trường sau phải bớt đi 1 cột-->
+                    <tbody>
+                        <tr>
+                            <th scope="row" rowspan="3">1</th>
+                            <td rowspan="3">DH060</td>
+                            <td rowspan="3">12/05/2018</td>
+                            <td>Mì kokomi 100 gói vị cà chua</td>
+                            <td>6 thùng</td>
+                            <td>
+                                <input type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nhập ghi chú">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mì Cung Đình vị gà nướng</td>
+                            <td>12 thùng</td>
+                            <td>
+                                <input type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nhập ghi chú">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mì Omachi khoai tây</td>
+                            <td>3 thùng</td>
+                            <td>
+                                <input type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nhập ghi chú">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="1">2</th>
+                            <td rowspan="1">DH061</td>
+                            <td rowspan="1">12/05/2018</td>
+                            <td>Thạch sữa chua Long Hải</td>
+                            <td>6 thùng</td>
+                            <td>
+                                <input type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nhập ghi chú">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="2">3</th>
+                            <td rowspan="2">DH063</td>
+                            <td rowspan="2">12/05/2018</td>
+                            <td>Chuối tươi</td>
+                            <td>40 kg</td>
+                            <td>
+                                <input type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nhập ghi chú">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Táo đỏ</td>
+                            <td>3 thùng</td>
+                            <td>
+                                <input type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nhập ghi chú">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

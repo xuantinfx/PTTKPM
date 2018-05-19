@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="card text-left">
+        <div class="card-header">
+            <h5>Thông tin cá nhân</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="#" method="post" onsubmit="return doiCheDoXemSangChinhSua()">
+                        <div class="form-group">
+                            <label for="hovaten">Họ và tên</label>
+                            <input type="text" class="form-control" name="" id="hovaten" value='Đào Xuân Tin' disabled='disabled'>
+                        </div>
+                        <div class="form-group">
+                            <label for="cmnd">Số chứng minh nhân dân</label>
+                            <input type="text" name="" id="cmnd" class="form-control" value="192046329" disabled='disabled'>
+                        </div>
+                        <div class="form-group">
+                            <label for="sdt">Số điện thoại</label>
+                            <input type="text" name="" id="sdt" class="form-control" value='01673081312' disabled='disabled'>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="" id="email" class="form-control" value="xuantinfx@gmail.com" disabled='disabled'>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-secondary btn-block">Cập nhật thông tin cá nhân</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group">
+                        <li class="list-group-item active">Đang làm chủ các Kho</li>
+                        <li class="list-group-item">Kho hàng Famili Bình Thạnh</li>
+                        <li class="list-group-item">Kho lưu trữ gấu bông Bình Dương</li>
+                        <li class="list-group-item">Nếu là quản lí hoặc nhân viên hoặc nhân viên thì thay đổi list ở đây</li>
+                    </ul>
+                    <div class="d-flex justify-content-center mt-3">
+                        <a href="#" class="btn btn-secondary">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script>
+    let edited = false;
+
+    function doiCheDoXemSangChinhSua() {
+        if (edited === false) {
+            let temp = document.getElementById('hovaten').removeAttribute('disabled');
+            temp = document.getElementById('cmnd').removeAttribute('disabled');
+            temp = document.getElementById('sdt').removeAttribute('disabled');
+            temp = document.getElementById('email').removeAttribute('disabled');
+            temp = document.getElementById('submit').innerText = 'Cập nhật';
+            edited = true;
+            return false;
+        }
+        return true;
+    }
+</script>

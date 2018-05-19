@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="card row">
+        <h4 class="card-header">
+            Báo cáo
+        </h4>
+        <div class="card-body">
+            <form>
+                <!--Form group dành cho ngày tháng-->
+                <div class="form-group">
+                    <!--Chọn khoảng thời gian cần tạo báo cáo-->
+                    <select value="thoi_gian">
+                        <option value="ngay">Ngày</option>
+                        <option value="thang">Tháng</option>
+                        <option value="quy">Quý</option>
+                        <option value="nam">Năm</option>
+                        <option value="tuy_chon">Tuỳ chọn</option>
+                    </select>
+                </div>
+                <!--form group dành cho phần tùy chọn ngày tháng-->
+                <div class="form-group row" style="margin-bottom:0;">
+                    <div class="input-group mb-3 col-4">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" style="font-size: 0.8em;">Ngày bắt đầu</label>
+                        </div>
+                        <input type="date" class="form-control" name="ngay_bat_dau">
+                    </div>
+                    <div class="input-group mb-3 col-4">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" style="font-size: 0.8em;">Ngày kết thúc</label>
+                        </div>
+                        <input type="date" class="form-control" name="ngay_bat_dau">
+                    </div>
+                </div>
+                <!--Form group dành cho nút tạo-->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-md">Tạo báo cáo</button>
+                </div>
+            </form>
+            <!--Báo cáo nhập-->
+            <h5>Nhập</h5>
+            <table class="table">
+                <tr>
+                    <th>STT</th>
+                    <th>Hàng hóa</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mì Hảo Hảo thùng</td>
+                    <td>5</td>
+                    <td>40000</td>
+                    <td>200000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bia 333 thùng</td>
+                    <td>10</td>
+                    <td>200000</td>
+                    <td>2000000</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Tổng:</td>
+                    <td>2200000</td>
+                </tr>
+            </table>
+            <!--Báo cáo xuất-->
+            <h5>Xuất</h5>
+            <table class="table">
+                <tr>
+                    <th>STT</th>
+                    <th>Hàng hóa</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mì Hảo Hảo thùng</td>
+                    <td>5</td>
+                    <td>40000</td>
+                    <td>200000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bia 333 thùng</td>
+                    <td>10</td>
+                    <td>200000</td>
+                    <td>2000000</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Tổng:</td>
+                    <td>2200000</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
