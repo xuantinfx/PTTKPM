@@ -32,7 +32,7 @@ CREATE TABLE QuanLy (
 	maNhanVien VARCHAR(10),
     maChuKhoHang VARCHAR(10),
     PRIMARY KEY (maNhanVien),
-    FOREIGN KEY (maNhanVien)  REFERENCES NhanVien(maNhanVien),
+    FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien),
     FOREIGN KEY (maChuKhoHang) REFERENCES ChuKhoHang(maNguoiDung)
 );
 
@@ -63,9 +63,11 @@ CREATE TABLE DonHang(
 	maDonHang VARCHAR(10),
     maKhoHang VARCHAR(10),
     ngayLapDon DATE,
-    nguoiLapDon TEXT,
+    nguoiLapDon VARCHAR(10),
+    trangThai TEXT,
     PRIMARY KEY (maDonHang),
-    FOREIGN KEY (maKhoHang) REFERENCES KhoHang(maKhoHang)
+    FOREIGN KEY (maKhoHang) REFERENCES KhoHang(maKhoHang),
+	FOREIGN KEY (nguoiLapDon) REFERENCES QuanLy(maNhanVien)
 );
 
 CREATE TABLE DonNhap(
@@ -82,24 +84,19 @@ CREATE TABLE DonXuat(
     FOREIGN KEY (maDonHang) REFERENCES DonHang(maDonHang)
 );
 
--- tao loai hang hoa
-CREATE TABLE LoaiHangHoa(
-	maLoaiHangHoa VARCHAR(10),
-    tenLoaiHangHoa TEXT,
-    PRIMARY KEY (maLoaiHangHoa)
-);
-
 -- tao bang hang hoa
 CREATE TABLE HangHoa(
 	maHangHoa VARCHAR(10),
-    maLoaiHangHoa VARCHAR(10),
+    tenHangHoa TEXT,
     maKhoHang VARCHAR(10),
     soLuong INT,
     ngayNhap DATE,
     ngayHetHan DATE,
     donGia INT,
+    donVi TEXT,
+    ghiChu TEXT,
+    trangThai TEXT,
     PRIMARY KEY(maHangHoa),
-    FOREIGN KEY (maLoaiHangHoa) REFERENCES LoaiHangHoa(maLoaiHangHoa),
     FOREIGN KEY (maKhoHang) REFERENCES KhoHang(maKhoHang)
 );
 
