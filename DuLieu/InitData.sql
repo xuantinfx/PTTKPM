@@ -32,12 +32,12 @@ INSERT INTO `khohangcuaban`.`QuanLy` (`maNhanVien`, `maChuKhoHang`) VALUES ('nv-
 INSERT INTO `khohangcuaban`.`QuanLy` (`maNhanVien`, `maChuKhoHang`) VALUES ('nv-1', '1');
 
 -- insert NhanVienKho
-INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`) VALUES ('nv-2', 'nv-1');
-INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`) VALUES ('nv-3', 'nv-1');
-INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`) VALUES ('nv-4', 'nv-1');
-INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`) VALUES ('nv-5', 'nv-0');
-INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`) VALUES ('nv-6', 'nv-0');
-INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`) VALUES ('nv-7', 'nv-0');
+INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`, `maKhoHang`) VALUES ('nv-2', 'nv-1', '1');
+INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`, `maKhoHang`) VALUES ('nv-3', 'nv-1', '1');
+INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`, `maKhoHang`) VALUES ('nv-4', 'nv-1', '1');
+INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`, `maKhoHang`) VALUES ('nv-5', 'nv-0', '0');
+INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`, `maKhoHang`) VALUES ('nv-6', 'nv-0', '0');
+INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`, `maKhoHang`) VALUES ('nv-7', 'nv-0', '0');
 
 -- insert KhoHang
 INSERT INTO `khohangcuaban`.`KhoHang` (`maKhoHang`, `tenKhoHang`, `diaChi`, `chuKho`, `quanLy`) VALUES ('0', 'Kho chị chủ', 'Bình Thạnh', '0', 'nv-0');
