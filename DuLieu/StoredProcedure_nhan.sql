@@ -19,7 +19,7 @@ DELIMITER ;*/
 DELIMITER //
 CREATE PROCEDURE xemDsDonHangXuat(IN ma_Kho VARCHAR(10))
 	BEGIN
-		SELECT	DonHang.maDonHang, DonHang.ngayLapDon, DonHang.trangThai, donXuat.ngayXuat, 
+		SELECT	DonHang.maDonHang, DonHang.ngayLapDon, DonHang.trangThai, DonXuat.ngayXuat, 
 				NguoiDung.hoTen
 		FROM DonHang JOIN DonXuat ON DonHang.maDonHang = DonXuat.maDonHang 
                       JOIN QuanLy ON QuanLy.maNhanVien = DonHang.nguoiLapDon
