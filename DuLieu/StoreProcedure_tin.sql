@@ -22,6 +22,31 @@ DELIMITER ;
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- lich xuat hang
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_lichXuatHang` $$
+CREATE PROCEDURE `sp_lichXuatHang`(
+  IN maKho VARCHAR(10)
+)
+BEGIN
+
+	SELECT *
+	FROM DonXuat JOIN DonHang ON DonXuat.maDonHang = DonHang.maDonHang
+								JOIN ChiTietDonXuat ON ChiTietDonXuat.maDonHang = DonXuat.maDonHang
+                                JOIN HangHoa ON HangHoa.maHangHoa = ChiTietDonXuat.maHangHoa
+    where DonHang.maKhoHang = maKho;
+
+END $$
+
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 -- lay thong tin cac chu kho
 
 DELIMITER $$
@@ -65,11 +90,14 @@ DELIMITER ;
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_nhanVienKho` $$
-CREATE PROCEDURE `sp_nhanVienKho`()
+CREATE PROCEDURE `sp_nhanVienKho`(
+	IN maNV VARCHAR(10)
+)
 BEGIN
 
 	SELECT *
-	FROM NhanVienKho;
+	FROM NhanVienKho
+    WHERE NhanVienKho.maNhanVien = maNV;
 
 END $$
 
@@ -79,7 +107,7 @@ DELIMITER ;
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- lay thong tin cac nhan vien kho
+-- lay thong maKho ma quan ly dang lam viec
 
 DELIMITER $$
 
