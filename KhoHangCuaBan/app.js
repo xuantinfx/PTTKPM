@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//Router
+var indexRouter_nhan = require('./routes/index_nhan');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 var mysql = require('mysql');
 var config = require('./config')
 
@@ -37,21 +39,21 @@ app.use((req, res, next) => {
   req.connectionToDB = connection;
 
   //fake đã login
-  //req.loaiNguoiDung = 'CK'//CK: chủ kho, QL: quản lý, NV: Nhân viên kho
-  req.loaiNguoiDung = 'QL';
-  //req.loaiNguoiDung = 'NV';
+  req.loaiNguoiDung = 'QL'//CK: chủ kho, QL: quản lý, NV: Nhân viên kho
   //fake chu kho
-  //req.maNguoiDung = '0'; //1,2
+  req.maNguoiDung = '0'; //1,2
+  //fake mã kho
+  req.maKhoHang = '0';
   //fake quan ly
   req.maNhanVien = 'nv-0'; //nv-1
   //fake nhan vien kho
-  //req.maNhanVien = 'nv-5' //nv-3, nv-4,nv-5,nv-6,nv-7
+  //req.maNhanVien = 'nv-2' //nv-3, nv-4,nv-5,nv-6,nv-7
 
   next();
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', indexRouter_nhan);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

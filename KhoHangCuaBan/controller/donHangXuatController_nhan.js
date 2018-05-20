@@ -18,8 +18,8 @@ exports.xem = (req, res) => {
             donHangXuat.ngayLapDon = (new Date(donHangXuat.ngayLapDon)).toLocaleDateString("vn");
             donHangXuat.ngayXuat ? donHangXuat.ngayXuat = (new Date(donHangXuat.ngayXuat)).toLocaleDateString("vn") : null;
         });
-        //render lại giao diện
-        res.render('donhangxuat', {dsDonHangXuat: data});
+        //render lại giao diện, truyền thêm biến donHangXuat để active cái navbar
+        res.render('donhangxuat', {dsDonHangXuat: data, donHangXuat: true});
     });
 
 }

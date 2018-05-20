@@ -1,6 +1,6 @@
 const modelQL = require('../models/model_quanly_tin')
 const modelNVK = require('../models/model_nhanvienkho_tin')
-const modelDH = require('../models/model_donhang_tin')
+const modelDH = require('../models/model_donhang_tin')
 
 const trangThaiDonHang = {
     ChuaHoanThanh: 'Chưa hoàn thành',

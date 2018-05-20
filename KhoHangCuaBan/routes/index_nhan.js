@@ -30,7 +30,7 @@ router.get('/don-hang-xuat', donHangXuatController.xem)
 
 //BÁO CÁO
 router.get('/bao-cao', (req, res, next) => {
-  res.render('baocao');
+  res.render('baocao', {baoCao: true});
 })
 
 module.exports = router;
