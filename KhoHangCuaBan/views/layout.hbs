@@ -33,7 +33,7 @@
                 </li>
                 <li>
                     <a href="/" {{#if dashboard}} class="active" {{/if}}>
-                        <i class="fas fa-box"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                     </a>
                 </li>
@@ -67,7 +67,7 @@
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-chart-bar"></i>
+                        <i class="fas fa-chart-pie"></i>
                         Biểu đồ</a>
                 </li>
                 <li>
@@ -81,12 +81,12 @@
                         Đơn hàng xuất</a>
                 </li>
                 <li>
-                    <a href="/hanghoa">
+                    <a href="/hang-hoa" {{#if hangHoa}} class="active" {{/if}}>
                         <i class="fas fa-cube"></i>
                         Hàng hoá</a>
                 </li>
                 <li>
-                    <a href="/nhanvien">
+                    <a href="/nhan-vien" {{#if nhanVien}} class="active" {{/if}}>
                         <i class="fas fa-users"></i>
                         Nhân viên</a>
                 </li>

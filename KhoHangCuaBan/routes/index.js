@@ -8,6 +8,8 @@ var router = express.Router();
 const controller_lichnhaphang_tin = require('../controller/controller_lichnhaphang_tin')
 const controller_lichxuathang_tin = require('../controller/controller_lichxuathang_tin')
 const controller_donhang_tin = require('../controller/controller_donhang_tin')
+const controller_hanghoa_tin = require('../controller/controller_hanghoa_tin')
+const controller_nhanvien_tin = require('../controller/controller_nhanvien_tin')
 
 router.get('/', function(req, res, next) {
   res.render('dashboard', { title: 'Dashboard', dashboard: true });
@@ -17,8 +19,12 @@ router.get('/', function(req, res, next) {
 router.get('/lich-nhap-hang', controller_lichnhaphang_tin.getLichNhapHang);
 //Lich xuat hang
 router.get('/lich-xuat-hang', controller_lichxuathang_tin.getLichXuatHang);
-//Don hang nhap xuat
-router.get('/don-hang-nhap',controller_donhang_tin.getDonHangNhap)
+//Don hang nhap
+router.get('/don-hang-nhap',controller_donhang_tin.getDonHangNhap);
+//Hang hoa
+router.get('/hang-hoa',controller_hanghoa_tin.getHangHoa);
+//Nhan vien
+router.get('/nhan-vien',controller_nhanvien_tin.getNhanVien);
 
 /****************************************************************/
 

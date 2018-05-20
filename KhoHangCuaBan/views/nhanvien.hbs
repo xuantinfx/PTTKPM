@@ -7,79 +7,28 @@
                     <th scope="col"></th>
                     <th scope="col">Username</th>
                     <th scope="col">Tên nhân viên</th>
+                    <th scope="col">SĐT</th>
                     <th scope="col">Kho làm việc</th>
                     <th scope="col">Vai trò</th>
-                    <th scope="col">Xem chi tiết</th>
                 </tr>
             </thead>
             <tbody>
+                {{#each dsNhanVien}}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>xuantinfx</td>
-                    <td>Đào Xuân Tin</td>
-                    <td>
-                        <form action="">
-                            <div class="form-group">
-                                <select class="form-control" name="vitrilamviec" id="">
-                                    <option selected>Shop Hoa Nguyễn Đình Chiểu</option>
-                                    <option>Family Mart Bình Thạnh</option>
-                                    <option>{Không}</option>
-                                </select>
-                            </div>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="">
-                            <div class="form-group">
-                                <select class="form-control" name="quyen" id="">
-                                    <option selected>Quản Lý</option>
-                                    <option>Nhân Viên</option>
-                                    <option>{Không}</option>
-                                </select>
-                            </div>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="#">Truy cập trang thông tin</a>
-                    </td>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.tenTaiKhoan}}</td>
+                    <td>{{this.hoTen}}</td>
+                    <td>{{this.sdt}}</td>
+                    <td>{{this.tenKhoHang}} - {{this.diaChi}}</td>
+                    <td>{{#if this.maQuanLy}}Nhân viên{{else}}Quản lý{{/if}}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>nhannguyen</td>
-                    <td>Nguyễn Phước Đồng Nhân</td>
-                    <td>
-                        <form action="">
-                            <div class="form-group">
-                                <select class="form-control" name="vitrilamviec" id="">
-                                    <option>Shop Hoa Nguyễn Đình Chiểu</option>
-                                    <option selected>Family Mart Bình Thạnh</option>
-                                    <option>{Không}</option>
-                                </select>
-                            </div>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="">
-                            <div class="form-group">
-                                <select class="form-control" name="quyen" id="">
-                                    <option>Quản Lý</option>
-                                    <option selected>Nhân Viên</option>
-                                    <option>{Không}</option>
-                                </select>
-                            </div>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="#">Truy cập trang thông tin</a>
-                    </td>
-                </tr>
+                {{/each}}
                 <tr>
                     <td></td>
                     <td>
                         <button class="btn btn-success btn-block" onclick="themFormNhanVien()">Thêm nhân viên</button>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>

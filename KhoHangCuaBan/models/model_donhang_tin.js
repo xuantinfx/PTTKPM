@@ -1,13 +1,25 @@
 module.exports = {
-    getLichNhapHang: (connection, maKhoHang, cb) => {
+    getLichNhap: (connection, maKhoHang, cb) => {
         connection.query({
             sql: `call sp_lichNhapHang('${maKhoHang}')`,
             nestTables: true
         }, cb)
     },
-    getLichXuatHang: (connection, maKhoHang, cb) => {
+    getLichXuat: (connection, maKhoHang, cb) => {
         connection.query({
             sql: `call sp_lichXuatHang('${maKhoHang}')`,
+            nestTables: true
+        }, cb)
+    },
+    getDonNhap: (connection, maKhoHang, cb) => {
+        connection.query({
+            sql: `call sp_getDonNhap('${maKhoHang}')`,
+            nestTables: true
+        }, cb)
+    },
+    getDonXuat: (connection, maKhoHang, cb) => {
+        connection.query({
+            sql: `call sp_getDonXuat('${maKhoHang}')`,
             nestTables: true
         }, cb)
     }

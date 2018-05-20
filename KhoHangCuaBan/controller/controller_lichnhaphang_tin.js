@@ -39,7 +39,7 @@ module.exports.getLichNhapHang = async (req, res, next) => {
             default:
                 throw (new Error('Không xác định được loại nhân viên'));
         }
-        modelDH.getLichNhapHang(connectionToDB, maKhoHang, (error, results) => {
+        modelDH.getLichNhap(connectionToDB, maKhoHang, (error, results) => {
 
             if (error) {
                 throw error;
