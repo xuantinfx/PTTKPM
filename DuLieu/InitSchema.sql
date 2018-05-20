@@ -42,6 +42,7 @@ CREATE TABLE KhoHang (
         diaChi TEXT,
         chuKho VARCHAR(10),
         quanLy VARCHAR(10),
+        moTa TEXT,
         PRIMARY KEY (maKhoHang),
         FOREIGN KEY (chuKho) REFERENCES ChuKhoHang(maNguoiDung),
         FOREIGN KEY (quanLy) REFERENCES QuanLy(maNhanVien)

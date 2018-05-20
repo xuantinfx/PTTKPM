@@ -1,0 +1,64 @@
+
+    <div class="container mt-3">
+        <div class="row">
+            <h1 class="col-lg-4">Đơn hàng xuất</h1>
+            <button class="btn btn-success h-50 my-auto">Thêm</button>
+        </div>
+        {{!-- <div class="row">
+            <div class="btn-group form-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">Nhập</button>
+                <button type="button" class="btn btn-secondary">Xuất</button>
+            </div>
+        </div> --}}
+        <!--Mỗi đơn hàng là 1 card-->
+        {{#each dsDonHangXuat}}
+        <div class="card row mt-3 mx-auto">
+            <h4 class="card-header">
+                {{maDonHang}}
+            </h4>
+            <div class="card-body">
+                <span>Ngày lập: </span>
+                <span>{{ngayLapDon}}</span>
+                <br>
+                <span>Người lập: </span>
+                <span>{{hoTen}}</span>
+                <br>
+                <span>Chi tiết: </span>
+                <!--Bảng chi tiết đơn hàng-->
+                <table class="table" style="margin: 20px 0px 20px;">
+                    <tr>
+                        <th>STT</th>
+                        <th>Hàng hóa</th>
+                        <th>Đơn vị</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                    {{#each chiTietDonHangXuat}}
+                    <tr>
+                        <td>{{@index}}</td>
+                        <td>{{tenHangHoa}}</td>
+                        <td>{{donVi}}</td>
+                        <td>{{soLuong}}</td>
+                        <td>{{donGia}}</td>
+                        <td>{{thanhTien}}</td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <td colspan="5">Tổng:</td>
+                        <td>{{tongTien}}</td>
+                    </tr>
+                </table>
+                <!--Ngày nhập/xuất khác với ngày tạo đơn-->
+                <span>Trạng thái: </span>
+                <span>{{trangThai}}</span>
+                <br>
+                <span>Ngày xuất:</span>
+                <span>{{ngayXuat}}</span>
+                <div class="form-group mt-2">
+                    <button class="btn btn-success">Chỉnh sửa</button>
+                    <button class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}

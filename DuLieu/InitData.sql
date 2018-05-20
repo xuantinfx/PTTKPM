@@ -32,8 +32,8 @@ INSERT INTO `khohangcuaban`.`QuanLy` (`maNhanVien`, `maChuKhoHang`) VALUES ('nv-
 INSERT INTO `khohangcuaban`.`QuanLy` (`maNhanVien`, `maChuKhoHang`) VALUES ('nv-1', '1');
 
 -- insert KhoHang
-INSERT INTO `khohangcuaban`.`KhoHang` (`maKhoHang`, `tenKhoHang`, `diaChi`, `chuKho`, `quanLy`) VALUES ('0', 'Kho chị chủ', 'Bình Thạnh', '0', 'nv-0');
-INSERT INTO `khohangcuaban`.`KhoHang` (`maKhoHang`, `tenKhoHang`, `diaChi`, `chuKho`, `quanLy`) VALUES ('1', 'Kho anh Bảy', 'Quận 1', '1', 'nv-1');
+INSERT INTO `khohangcuaban`.`KhoHang` (`maKhoHang`, `tenKhoHang`, `diaChi`, `chuKho`, `quanLy`,`moTa`) VALUES ('0', 'Kho chị chủ', 'Bình Thạnh', '0', 'nv-0', 'Kho này là kho của chị chủ');
+INSERT INTO `khohangcuaban`.`KhoHang` (`maKhoHang`, `tenKhoHang`, `diaChi`, `chuKho`, `quanLy`,`moTa`) VALUES ('1', 'Kho anh Bảy', 'Quận 1', '1', 'nv-1', 'Kho này là kho của anh Bảy');
 -- người dùng 3 chưa có kho
 
 -- insert NhanVienKho
