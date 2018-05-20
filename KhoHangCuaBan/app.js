@@ -37,13 +37,15 @@ app.use((req, res, next) => {
   req.connectionToDB = connection;
 
   //fake đã login
-  req.loaiNguoiDung = 'CK'//CK: chủ kho, QL: quản lý, NV: Nhân viên kho
+  //req.loaiNguoiDung = 'CK'//CK: chủ kho, QL: quản lý, NV: Nhân viên kho
+  req.loaiNguoiDung = 'QL';
+  //req.loaiNguoiDung = 'NV';
   //fake chu kho
-  req.maNguoiDung = '0'; //1,2
+  //req.maNguoiDung = '0'; //1,2
   //fake quan ly
-  //req.maNhanVien = 'nv-0'; //nv-1
+  req.maNhanVien = 'nv-0'; //nv-1
   //fake nhan vien kho
-  //req.maNhanVien = 'nv-2' //nv-3, nv-4,nv-5,nv-6,nv-7
+  //req.maNhanVien = 'nv-5' //nv-3, nv-4,nv-5,nv-6,nv-7
 
   next();
 });
