@@ -3,7 +3,15 @@ a {
 }
 
 .icon {
-  width: 80%;
+  width: 100%;
   display: block;
   margin: 0 auto;
+}
+
+.hover-boder {
+  margin-top: 10px;
+}
+
+.hover-boder:hover {
+  box-shadow: 3px -12px 17px 13px rgba(0,0,0,0.2);
 }

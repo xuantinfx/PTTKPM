@@ -18,6 +18,8 @@
             <span>Người lập: </span>
             <span>{{this.nguoiLap}}</span>
             <br>
+            <span>Trạng thái: </span>
+            <span class="badge badge-success">{{this.dsHangHoa.0.trangThai}}</span>
             <!--Bảng chi tiết đơn hàng-->
             <table class="table" style="margin: 20px 0px 20px;">
                 <tr>
@@ -29,7 +31,7 @@
                 </tr>
                 {{#each this.dsHangHoa}}
                 <tr>
-                    <td> {{@index}}</td>
+                    <td>{{@index}}</td>
                     <td>{{this.tenHangHoa}}</td>
                     <td>{{this.soLuong}} {{this.donVi}}</td>
                     <td>{{this.donGia}}</td>
