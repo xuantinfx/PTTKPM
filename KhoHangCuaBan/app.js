@@ -3,6 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
+var session = require('express-session');
+var passport = require('passport');
+//xài local strategy
+var LocalStrategy = require('passport-local').Strategy;
 
 //Router
 var indexRouter_nhan = require('./routes/index_nhan');
@@ -24,7 +30,20 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
+
+//Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Express Session
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Dùng middlewere này để chèn những thứ cần thiết vào req
 app.use((req, res, next) => {
@@ -48,7 +67,6 @@ app.use((req, res, next) => {
   req.maNhanVien = 'nv-0'; //nv-1
   //fake nhan vien kho
   //req.maNhanVien = 'nv-2' //nv-3, nv-4,nv-5,nv-6,nv-7
-
   next();
 });
 
