@@ -1,4 +1,4 @@
-var khoHangModel = require('../model/khoHangModel_nhan');
+var khoHangModel = require('../models/khoHangModel_nhan');
 
 exports.xem = (req, res) => {
     //xử lí request

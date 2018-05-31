@@ -1,4 +1,4 @@
-var donHangXuatModel = require('../model/donHangXuatModel_nhan');
+var donHangXuatModel = require('../models/donHangXuatModel_nhan');
 
 exports.xem = (req, res) => {
     //xử lí request
