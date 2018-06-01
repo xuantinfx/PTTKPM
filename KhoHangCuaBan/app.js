@@ -45,6 +45,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
 // Dùng middlewere này để chèn những thứ cần thiết vào req
 app.use((req, res, next) => {
   //Chèn connectionDB vào để sử dụng để query DB

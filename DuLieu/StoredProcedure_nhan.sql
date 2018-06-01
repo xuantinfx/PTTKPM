@@ -49,4 +49,73 @@ CREATE PROCEDURE xemKhoTheoIdChu(IN ma_Chu_Kho VARCHAR(10))
 		SELECT * FROM KhoHang WHERE chuKho = ma_Chu_Kho;
 	END //
 DELIMITER ;
+
+-- layNguoiDungTheoMaNguoiDung
+DELIMITER //
+CREATE PROCEDURE layNguoiDungTheoMaNguoiDung(IN username TEXT)
+	BEGIN
+		SELECT maNguoiDung, email, tenTaiKhoan, matKhau 
+        FROM NguoiDung WHERE tenTaiKhoan = username;
+	END //
+DELIMITER ;
+
+-- kiểm tra người dùng có là chủ kho
+DELIMITER //
+CREATE PROCEDURE laChuKho(IN username TEXT)
+	BEGIN
+		SELECT ChuKhoHang.maNguoiDung 
+		FROM NguoiDung JOIN ChuKhoHang ON chuKhoHang.maNguoiDung = NguoiDung.maNguoiDung
+		WHERE NguoiDung.tenTaiKhoan = username;
+	END //
+DELIMITER ;
+
+-- kiểm tra người dùng có là quản lí
+DELIMITER //
+CREATE PROCEDURE laQuanLy(IN username TEXT)
+	BEGIN
+		SELECT QuanLy.maNhanVien 
+		FROM NguoiDung JOIN NhanVien ON NguoiDung.maNguoiDung = NhanVien.maNguoiDung
+						JOIN QuanLy ON QuanLy.maNhanVien = NhanVien.maNhanVien
+		WHERE NguoiDung.tenTaiKhoan = username;
+	END //
+DELIMITER ;
+
+
+-- kiểm tra người dùng có là nhân viên kho
+DELIMITER //
+CREATE PROCEDURE laNhanVienKho(IN username TEXT)
+	BEGIN
+		SELECT NhanVienKho.maNhanVien 
+		FROM NguoiDung JOIN NhanVien ON NguoiDung.maNguoiDung = NhanVien.maNguoiDung
+						JOIN NhanVienKho ON NhanVienKho.maNhanVien = NhanVien.maNhanVien
+		WHERE NguoiDung.tenTaiKhoan = username;
+	END //
+DELIMITER ;
+
+-- lấy ds mã kho theo mã chủ kho
+DELIMITER //
+CREATE PROCEDURE layDsMaKhoTheoMaChuKho(IN ma_Chu_Kho TEXT)
+	BEGIN
+		SELECT maKhoHang FROM KhoHang WHERE chuKho = ma_Chu_Kho;
+	END //
+DELIMITER ;
+
+-- lấy ds mã kho theo mã quản lý
+DELIMITER //
+CREATE PROCEDURE layDsMaKhoTheoMaQuanLy(IN ma_Quan_Ly TEXT)
+	BEGIN
+		SELECT maKhoHang FROM KhoHang WHERE quanLy = ma_Quan_Ly;
+	END //
+DELIMITER ;
+
+-- lay mã kho theo mã nhân viên kho
+DELIMITER //
+CREATE PROCEDURE layMaKhoTheoMaNhanVienKho(IN ma_Nhan_Vien TEXT)
+	BEGIN
+		SELECT maKhoHang FROM NhanVienKho
+        WHERE maNhanVien = ma_Nhan_Vien;
+	END //
+DELIMITER ;
+
+
                       
