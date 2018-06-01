@@ -14,7 +14,7 @@ CREATE PROCEDURE xemDsDonHangXuat(IN ma_Kho VARCHAR(10))
 		WHERE DonHang.maKhoHang = '0';
     END//
 DELIMITER ;*/
-
+USE khohangcuaban;
 -- xemDsDonHangXuat
 DELIMITER //
 CREATE PROCEDURE xemDsDonHangXuat(IN ma_Kho VARCHAR(10))
@@ -64,7 +64,7 @@ DELIMITER //
 CREATE PROCEDURE laChuKho(IN username TEXT)
 	BEGIN
 		SELECT ChuKhoHang.maNguoiDung 
-		FROM NguoiDung JOIN ChuKhoHang ON chuKhoHang.maNguoiDung = NguoiDung.maNguoiDung
+		FROM NguoiDung JOIN ChuKhoHang ON ChuKhoHang.maNguoiDung = NguoiDung.maNguoiDung
 		WHERE NguoiDung.tenTaiKhoan = username;
 	END //
 DELIMITER ;
