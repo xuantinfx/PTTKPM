@@ -41,7 +41,8 @@ passport.serializeUser(function (user, done) {
         maChuKho: user.maChuKho,
         maQuanLy: user.maQuanLy,
         maNhanVienKho: user.maNhanVienKho,
-        maKho: user.maKho
+        maKho: user.maKho,
+        maKhoHienHanh: user.maKhoHienHanh
     });
 });
 
@@ -117,7 +118,9 @@ function KiemTraThongTinNguoiDungVaMaKho(req, username, user, done) {
             })
         }
     ], (err, result) => {
-        console.log('Đã xong')
+        console.log('Đã xong');
+        //thêm thuộc tính kho hàng hiện hành
+        if (user.maKho) user.maKhoHienHanh = user.maKho[0];
         return done(null, user);
     });
 }
