@@ -1,75 +1,72 @@
-
-    <div class="container">
-        <div class="card mt-5">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    <b>Lịch xuất hàng trong</b>
-                                </label>
-                            </div>
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option value="1">Ngày</option>
-                                <option value="2">Tuần</option>
-                            </select>
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">
+                                <b>Lịch xuất hàng trong</b>
+                            </label>
                         </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option value="1">Ngày</option>
+                            <option value="2">Tuần</option>
+                        </select>
                     </div>
                 </div>
             </div>
+        </div>
+        <form action="/lich-xuat-hang" method="POST">
             <div class="card-body">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">STT</th>
                             <th scope="col">Mã đơn hàng</th>
-                            <th scope="col">Ngày xuât</th>
+                            <th scope="col">Ngày xuất</th>
                             <th scope="col">Tên mặt hàng</th>
                             <th scope="col">Số lượng</th>
-                            <th scope="col">Đã xuât hàng</th>
+                            <th scope="col">Đã xuất hàng</th>
                             <th scope="col">Ghi chú</th>
                         </tr>
                     </thead>
                     <!--Nếu có trường đã dành 3 hàng thì 2 trường sau phải bớt đi 1 cột-->
                     <tbody>
                         {{#each dsDonXuat}}
-                    <tr>
-                        <th scope="row" rowspan="{{this.dsHangHoa.length}}">1</th>
-                        <td rowspan="{{this.dsHangHoa.length}}">{{this.maDonHang}}</td>
-                        <td rowspan="{{this.dsHangHoa.length}}">{{this.ngayXuat}}{{#unless this.ngayXuat}}Trống{{/unless}}</td>
-                        <td>{{this.dsHangHoa.0.tenHangHoa}}</td>
-                        <td>{{this.dsHangHoa.0.soLuong}} {{this.dsHangHoa.0.donVi}}</td>
-                        <td>
-                            <input type="checkbox" class="ml-4">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" placeholder="{{this.dsHangHoa.0.ghiChu}}{{#unless this.dsHangHoa.0.ghiChu}}Nhập ghi chú{{/unless}}">
-                        </td>
-                    </tr>
-                    {{#each this.dsHangHoa}}
-                    {{#if this.trick}}
-                    {{else}}
-                    <tr>
-                        <td>{{this.tenHangHoa}}</td>
-                        <td>{{this.soLuong}} {{this.donVi}}</td>
-                        <td>
-                            <input type="checkbox" class="ml-4">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" placeholder="{{this.ghiChu}}{{#unless this.ghiChu}}Nhập ghi chú{{/unless}}">
-                        </td>
-                    </tr>
-                    {{/if}}
-                    {{/each}}
-                    {{/each}}
+                        <tr>
+                            <th scope="row" rowspan="{{this.dsHangHoa.length}}">1</th>
+                            <td rowspan="{{this.dsHangHoa.length}}">{{this.maDonHang}}</td>
+                            <td rowspan="{{this.dsHangHoa.length}}">{{this.ngayNhap}}{{#unless this.ngayNhap}}Trống{{/unless}}</td>
+                            <td>{{this.dsHangHoa.0.tenHangHoa}}</td>
+                            <td>{{this.dsHangHoa.0.soLuong}} {{this.dsHangHoa.0.donVi}}</td>
+                            <td>
+                                <input name="done" {{#equal this.dsHangHoa.0.trangThai "Đã xuất" }}checked{{/equal}} value="{{this.dsHangHoa.0.maHangHoa}}" type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input name="gc-{{this.dsHangHoa.0.maHangHoa}}" type="text" class="form-control" value="{{this.dsHangHoa.0.ghiChu}}" placeholder="{{#unless this.dsHangHoa.0.ghiChu}}Nhập ghi chú{{/unless}}">
+                            </td>
+                        </tr>
+                        {{#each this.dsHangHoa}} {{#if this.trick}} {{else}}
+                        <tr>
+                            <td>{{this.tenHangHoa}}</td>
+                            <td>{{this.soLuong}} {{this.donVi}}</td>
+                            <td>
+                                <input name="done"  {{#equal this.trangThai "Đã xuất" }}checked{{/equal}} value="{{this.maHangHoa}}" type="checkbox" class="ml-4">
+                            </td>
+                            <td>
+                                <input name="gc-{{this.maHangHoa}}" type="text" class="form-control" value="{{this.ghiChu}}" placeholder="{{#unless this.ghiChu}}xuất ghi chú{{/unless}}">
+                            </td>
+                        </tr>
+                        {{/if}} {{/each}} {{/each}}
                     </tbody>
                 </table>
                 <div class="row">
-                <div class="col-4 offset-8">
-                    <button class="btn btn-success btn-lg btn-block">Submit</button>
+                    <div class="col-4 offset-8">
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
+        </form>
     </div>
+</div>

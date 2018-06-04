@@ -6,12 +6,11 @@ module.exports.getNhanVien = (req, res, next) => {
     connectionToDB.connect();
     try {
         //Lấy thông tin người đang vào
-        switch (req.loaiNguoiDung) {
+        switch (req.user.loaiNguoiDung) {
             case 'CK':
                 {
-                    console.log('chu kho ne')
                     tuCach = 'Chủ kho';
-                    modelNhanVien.layNVCuaChuKho(connectionToDB, req.maNguoiDung, (err, results) => {
+                    modelNhanVien.layNVCuaChuKho(connectionToDB, req.user.maNguoiDung, (err, results) => {
                         if (err) {
                             throw err;
                         }
@@ -22,6 +21,7 @@ module.exports.getNhanVien = (req, res, next) => {
                             nhanVien: true,
                             tuCach,
                             dsNhanVien: results,
+                            user: req.user
                         });
                     })
                 }
@@ -29,7 +29,7 @@ module.exports.getNhanVien = (req, res, next) => {
             case 'QL':
                 {
                     tuCach = 'Quản lý'
-                    modelNhanVien.layNVCuaQuanLy(connectionToDB, req.maNhanVien, (err, results) => {
+                    modelNhanVien.layNVCuaQuanLy(connectionToDB, req.user.maQuanLy, (err, results) => {
                         if (err) {
                             throw err;
                         }
@@ -41,6 +41,7 @@ module.exports.getNhanVien = (req, res, next) => {
                             nhanVien: true,
                             tuCach,
                             dsNhanVien: results,
+                            user: req.user
                         });
                     })
                 }

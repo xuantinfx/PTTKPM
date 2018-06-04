@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var session = require('express-session');
 var passport = require('passport');
+var hbs = require("hbs")
+hbs.registerHelper("equal", require("handlebars-helper-equal"))
 //xài local strategy
 var LocalStrategy = require('passport-local').Strategy;
 
@@ -59,14 +61,14 @@ app.use((req, res, next) => {
   });
   req.connectionToDB = connection;
 
-  //fake đã login
-  req.loaiNguoiDung = 'QL'//CK: chủ kho, QL: quản lý, NV: Nhân viên kho
-  //fake chu kho
-  req.maNguoiDung = '0'; //1,2
-  //fake mã kho
-  req.maKhoHang = '0';
-  //fake quan ly
-  req.maNhanVien = 'nv-0'; //nv-1
+  // //fake đã login
+  // req.loaiNguoiDung = 'QL'//CK: chủ kho, QL: quản lý, NV: Nhân viên kho
+  // //fake chu kho
+  // req.maNguoiDung = '0'; //1,2
+  // //fake mã kho
+  // req.maKhoHang = '0';
+  // //fake quan ly
+  // req.maNhanVien = 'nv-0'; //nv-1
   //fake nhan vien kho
   //req.maNhanVien = 'nv-2' //nv-3, nv-4,nv-5,nv-6,nv-7
   next();
@@ -88,7 +90,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error',{user: req.user});
 });
 
 module.exports = app;

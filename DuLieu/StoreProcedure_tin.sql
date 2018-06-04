@@ -46,12 +46,12 @@ DELIMITER ;
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- lay don nhap
+-- lay don nhap cua kho
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sp_getDonNhap` $$
-CREATE PROCEDURE `sp_getDonNhap`(
+DROP PROCEDURE IF EXISTS `sp_getDonNhapCuaKho` $$
+CREATE PROCEDURE `sp_getDonNhapCuaKho`(
   IN maKho VARCHAR(10)
 )
 BEGIN
@@ -72,12 +72,12 @@ DELIMITER ;
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- lay don xuat
+-- lay don nhap theo ma don
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sp_getDonXuat` $$
-CREATE PROCEDURE `sp_getDonXuat`(
-  IN maKho VARCHAR(10)
+DROP PROCEDURE IF EXISTS `sp_getDonNhap` $$
+CREATE PROCEDURE `sp_getDonNhap`(
+  IN maDonNhap VARCHAR(10)
 )
 BEGIN
 
@@ -87,7 +87,7 @@ BEGIN
                                 JOIN HangHoa ON HangHoa.maHangHoa = ChiTietDonNhap.maHangHoa
                                 JOIN NhanVien ON DonHang.nguoiLapDon = NhanVien.maNhanVien
                                 JOIN NguoiDung ON NhanVien.maNguoiDung = NguoiDung.maNguoiDung
-    where DonHang.maKhoHang = maKho;
+    where DonHang.maDonHang = maDonNhap;
 
 END $$
 
@@ -97,6 +97,30 @@ DELIMITER ;
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- lay don nhap theo ma don
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_getDonXuat` $$
+CREATE PROCEDURE `sp_getDonXuat`(
+  IN maDonXuat VARCHAR(10)
+)
+BEGIN
+
+	SELECT *
+	FROM DonXuat JOIN DonHang ON DonXuat.maDonHang = DonHang.maDonHang
+								JOIN ChiTietDonXuat ON ChiTietDonXuat.maDonHang = DonXuat.maDonHang
+                                JOIN HangHoa ON HangHoa.maHangHoa = ChiTietDonXuat.maHangHoa
+                                JOIN NhanVien ON DonHang.nguoiLapDon = NhanVien.maNhanVien
+                                JOIN NguoiDung ON NhanVien.maNguoiDung = NguoiDung.maNguoiDung
+    where DonHang.maDonHang = maDonXuat;
+
+END $$
+
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- lay thong tin cac chu kho
 
@@ -248,3 +272,86 @@ DELIMITER ;
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- cap nhat trang thai cua hang hoa
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_updateSatusHangHoaNhap` $$
+CREATE PROCEDURE `sp_updateSatusHangHoaNhap`(
+	IN maHangHoa VARCHAR(10),
+    IN trangThai TEXT,
+    IN ngayHetHan DATE,
+    IN ngayNhap DATE,
+    IN ghiChu TEXT
+)
+BEGIN
+
+	UPDATE HangHoa
+    SET HangHoa.trangThai = trangThai,
+        HangHoa.ngayHetHan = ngayHetHan,
+        HangHoa.ngayNhap = ngayNhap,
+        HangHoa.ghiChu = ghiChu
+	WHERE HangHoa.maHangHoa = maHangHoa;
+
+END $$
+
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- cap nhat trang thai cua hang hoa
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_updateSatusHangHoaXuat` $$
+CREATE PROCEDURE `sp_updateSatusHangHoaXuat`(
+	IN maHangHoa VARCHAR(10),
+    IN trangThai TEXT,
+    IN ghiChu TEXT
+)
+BEGIN
+
+	UPDATE HangHoa
+    SET HangHoa.trangThai = trangThai,
+        HangHoa.ghiChu = ghiChu
+	WHERE HangHoa.maHangHoa = maHangHoa;
+
+END $$
+
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-- cap nhat trang thai cua hang hoa
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_updateSatusDonHang` $$
+CREATE PROCEDURE `sp_updateSatusDonHang`(
+	IN maDonHang VARCHAR(10),
+    IN trangThai TEXT
+)
+BEGIN
+
+	UPDATE DonHang
+    SET DonHang.trangThai = trangThai
+	WHERE DonHang.maDonHang = maDonHang;
+
+END $$
+
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+select * from DonHang;
+
+select * from DonXuat;
+
+select * from HangHoa;

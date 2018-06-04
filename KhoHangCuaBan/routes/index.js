@@ -14,16 +14,35 @@ const xacThucController = require('../controller/xacThucController');
 
 
 router.get('/', xacThucController.daDangNhap, function (req, res, next) {
+  let tuCach = "";
+  switch (req.user.loaiNguoiDung) {
+    case 'CK':
+      tuCach = "Chủ kho"
+      break;
+    case 'QL':
+        tuCach = 'Quản lý'
+      break;
+    case 'NV':
+        tuCach = 'Nhân viên'
+      break;
+
+    default:
+      tuCach = "Không rõ"
+  }
   res.render('dashboard', {
     title: 'Dashboard',
-    dashboard: true
+    dashboard: true,
+    user: req.user,
+    tuCach
   });
 });
 
 //Lich nhap hang
 router.get('/lich-nhap-hang', controller_lichnhaphang_tin.getLichNhapHang);
+router.post('/lich-nhap-hang', controller_lichnhaphang_tin.postNhapHang);
 //Lich xuat hang
 router.get('/lich-xuat-hang', controller_lichxuathang_tin.getLichXuatHang);
+router.post('/lich-xuat-hang', controller_lichxuathang_tin.postXuatHang);
 //Don hang nhap
 router.get('/don-hang-nhap', controller_donhang_tin.getDonHangNhap);
 //Hang hoa
