@@ -4,6 +4,7 @@ var donHangXuatController = require('../controller/donHangXuatController_nhan');
 var nguoiDungController = require('../controller/nguoiDungController_nhan');
 var xacThucController = require('../controller/xacThucController');
 
+
 var router = express.Router();
 
 //ĐĂNG NHẬP
@@ -29,12 +30,15 @@ router.get('/', function (req, res, next) {
   });
 });
 
+//NGƯỜI DÙNG
+router.get('/nguoi-dung/lay-thong-tin-trong-session', nguoiDungController.layThongTinNguoiDungTrongSession);
+
 //KHO HÀNG
 router.get('/kho-hang', khoHangController.xem);
 
-router.get('/kho-hang/them', function (req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('kho-hang/them', (req, res) => {
+  res.end('Đã vào route thêm');
+})
 
 router.get('/kho-hang/xoa', function (req, res, next) {
   res.send('respond with a resource');
@@ -45,7 +49,13 @@ router.get('/kho-hang/sua', function (req, res, next) {
 });
 
 //ĐƠN HÀNG XUẤT
-router.get('/don-hang-xuat', donHangXuatController.xem)
+router.get('/don-hang-xuat', donHangXuatController.xem);
+
+router.get('/don-hang-xuat/lay-option-ds-mat-hang-da-nhap', donHangXuatController.layDsMatHangDaNhap);
+
+router.post('/don-hang-xuat/them', donHangXuatController.themDonHangXuat);
+
+
 
 //BÁO CÁO
 router.get('/bao-cao', (req, res, next) => {

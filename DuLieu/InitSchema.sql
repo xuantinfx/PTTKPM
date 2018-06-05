@@ -90,7 +90,7 @@ CREATE TABLE HangHoa(
 	maHangHoa VARCHAR(10),
     tenHangHoa TEXT,
     maKhoHang VARCHAR(10),
-    soLuong INT,
+    soLuong INT unsigned,
     ngayNhap DATE,
     ngayHetHan DATE,
     donGia INT,

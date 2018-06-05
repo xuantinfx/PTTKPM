@@ -55,7 +55,8 @@ app.use((req, res, next) => {
     user: config.mysql.user,
     password: config.mysql.pass,
     database: config.mysql.database,
-    port: config.mysql.port
+    port: config.mysql.port,
+    multipleStatements: true
   });
   req.connectionToDB = connection;
 

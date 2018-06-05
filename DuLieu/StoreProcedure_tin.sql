@@ -1,3 +1,4 @@
+USE khohangcuaban
 -- lich nhap hang
 
 DELIMITER $$
@@ -82,9 +83,9 @@ CREATE PROCEDURE `sp_getDonXuat`(
 BEGIN
 
 	SELECT *
-	FROM DonNhap JOIN DonHang ON DonNhap.maDonHang = DonHang.maDonHang
-								JOIN ChiTietDonNhap ON ChiTietDonNhap.maDonHang = DonNhap.maDonHang
-                                JOIN HangHoa ON HangHoa.maHangHoa = ChiTietDonNhap.maHangHoa
+	FROM DonXuat JOIN DonHang ON DonXuat.maDonHang = DonHang.maDonHang
+								JOIN ChiTietDonXuat ON ChiTietDonXuat.maDonHang = DonXuat.maDonHang
+                                JOIN HangHoa ON HangHoa.maHangHoa = ChiTietDonXuat.maHangHoa
                                 JOIN NhanVien ON DonHang.nguoiLapDon = NhanVien.maNhanVien
                                 JOIN NguoiDung ON NhanVien.maNguoiDung = NguoiDung.maNguoiDung
     where DonHang.maKhoHang = maKho;

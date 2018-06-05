@@ -36,6 +36,7 @@ passport.serializeUser(function (user, done) {
     done(null, {
         maNguoiDung: user.maNguoiDung,
         tenTaiKhoan: user.tenTaiKhoan,
+        tenNguoiDung: user.hoTen,
         email: user.email,
         loaiNguoiDung: user.loaiNguoiDung,
         maChuKho: user.maChuKho,
@@ -48,7 +49,7 @@ passport.serializeUser(function (user, done) {
 
 //phương thức deserialize: từ những thông tin trong session -> truy cập database lấy những thông tin cần thiết (nếu có)
 passport.deserializeUser(function (nguoiDung, done) {
-    console.log(nguoiDung);
+    // console.log(nguoiDung);
     done(null, nguoiDung);
 });
 
@@ -135,4 +136,10 @@ exports.dangNhap = passport.authenticate('local', {
 exports.dangXuat = function (req, res){
     req.logout();
     res.redirect('/dang-nhap');
+}
+
+//lấy thông tin người dùng trong session
+exports.layThongTinNguoiDungTrongSession = function(req, res){
+    // console.log(req.user);
+    res.json(req.user);
 }
