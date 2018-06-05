@@ -1,39 +1,48 @@
 const modelQL = require('../models/model_quanly_tin')
 const modelNVK = require('../models/model_nhanvienkho_tin')
 const modelDH = require('../models/model_donhang_tin')
+const modelHH = require('../models/model_hanghoa_tin')
 
 const trangThaiDonHang = {
     ChuaHoanThanh: 'Chưa hoàn thành',
     DaHoanThanh: 'Đã hoàn thành'
 }
 
+const trangThaiHangHoa = {
+    DaXuat: 'Đã xuất',
+    ChoXuat: 'Chờ xuất'
+}
+
+const beautifyDate = (date) => {
+    if (!date)
+        return null;
+
+    date = new Date(date);
+    let d = date.getDate();
+    if (d < 10) d = '0' + d;
+    let m = date.getMonth() + 1;
+    if (m < 10) m = '0' + m;
+    return `${date.getFullYear()}-${m}-${d}`;
+}
+
 module.exports.getLichXuatHang = async (req, res, next) => {
     let connectionToDB = req.connectionToDB;
-    let tuCach = '';
+    let tuCach = ''
     connectionToDB.connect();
     let maKhoHang = '0';
     try {
         //Lấy thông tin người đang vào
-        //la chu kho thì dẫn chủ kho về /dashboard
-        switch (req.loaiNguoiDung) {
+        //la chu kho thì dẫn chủ kho về 
+        maKhoHang = req.user.maKhoHienHanh;
+        switch (req.user.loaiNguoiDung) {
             case 'CK':
-                throw "ChuKho"
+                tuCach = "Chủ kho"
                 break;
             case 'QL':
-                try {
-                    tuCach = 'Quản lý';
-                    maKhoHang = await modelQL.qlLayMaKho(connectionToDB, req.maNhanVien);
-                } catch (error) {
-                    throw error;
-                }
+                    tuCach = 'Quản lý'
                 break;
             case 'NV':
-                try {
-                    tuCach = 'Nhân viên';
-                    maKhoHang = await modelNVK.nvkLayMaKho(connectionToDB, req.maNhanVien);
-                } catch (error) {
-                    throw error;
-                }
+                    tuCach = 'Nhân viên'
                 break;
 
             default:
@@ -45,7 +54,7 @@ module.exports.getLichXuatHang = async (req, res, next) => {
                 throw error;
             };
             results = results[0];
-            let dsLichXuatHang = [];
+            let dsLichNhapHang = [];
 
             //lay ra danh sach cac don hang
             let dsDonXuat = [];
@@ -73,14 +82,16 @@ module.exports.getLichXuatHang = async (req, res, next) => {
                     if (dsDonXuat[i].maDonHang == dsDonXuatChuaXuLi[j].DonXuat.maDonHang) {
                         //lan dau insert
                         if (dsDonXuat[i].ngayLapDon == undefined) {
-                            dsDonXuat[i].ngayLapDon = (new Date(dsDonXuatChuaXuLi[j].DonHang.ngayLapDon)).toLocaleDateString();
-                            dsDonXuat[i].ngayXuat = dsDonXuatChuaXuLi[j].DonXuat.ngayXuat ? (new Date(dsDonXuatChuaXuLi[j].DonXuat.ngayXuat)).toLocaleDateString() : null;
+                            dsDonXuat[i].ngayLapDon = (new Date(dsDonXuatChuaXuLi[j].DonHang.ngayLapDon)).toLocaleDateString("vi");
+                            dsDonXuat[i].ngayNhap = beautifyDate(dsDonXuatChuaXuLi[j].DonXuat.ngayNhap);
                             dsDonXuat[i].dsHangHoa = [{
                                 tenHangHoa: dsDonXuatChuaXuLi[j].HangHoa.tenHangHoa,
                                 soLuong: dsDonXuatChuaXuLi[j].HangHoa.soLuong,
                                 trangThai: dsDonXuatChuaXuLi[j].HangHoa.trangThai,
                                 ghiChu: dsDonXuatChuaXuLi[j].HangHoa.ghiChu,
-                                donVi: dsDonXuatChuaXuLi[j].HangHoa.donVi
+                                donVi: dsDonXuatChuaXuLi[j].HangHoa.donVi,
+                                maHangHoa: dsDonXuatChuaXuLi[j].HangHoa.maHangHoa,
+                                ngayHetHan: beautifyDate(dsDonXuatChuaXuLi[j].HangHoa.ngayHetHan)
                             }];
                         }
                         //insert tu lan 2 tro di
@@ -90,7 +101,9 @@ module.exports.getLichXuatHang = async (req, res, next) => {
                                 soLuong: dsDonXuatChuaXuLi[j].HangHoa.soLuong,
                                 trangThai: dsDonXuatChuaXuLi[j].HangHoa.trangThai,
                                 ghiChu: dsDonXuatChuaXuLi[j].HangHoa.ghiChu,
-                                donVi: dsDonXuatChuaXuLi[j].HangHoa.donVi
+                                donVi: dsDonXuatChuaXuLi[j].HangHoa.donVi,
+                                maHangHoa: dsDonXuatChuaXuLi[j].HangHoa.maHangHoa,
+                                ngayHetHan: beautifyDate(dsDonXuatChuaXuLi[j].HangHoa.ngayHetHan)
                             });
                         }
                     }
@@ -100,22 +113,110 @@ module.exports.getLichXuatHang = async (req, res, next) => {
             for (let i = 0; i < dsDonXuat.length; i++) {
                 dsDonXuat[i].dsHangHoa[0].trick = true;
             }
-
+            console.log(dsDonXuat);
             //res.end(JSON.stringify(dsDonXuat));
             res.render('lichxuathang', {
                 title: 'Lịch xuất hàng',
                 lichXuathang: true,
                 dsDonXuat,
-                tuCach
+                tuCach,
+                user: req.user
             });
         });
         connectionToDB.end();
     } catch (mess) {
         connectionToDB.end();
-        if (mess == 'ChuKho') {
-            return res.redirect('/');
-        }
         console.log(mess);
         return next();
     }
+}
+
+module.exports.postXuatHang = (req, res, next) => {
+    let connectionToDB = req.connectionToDB;
+    let tuCach = ''
+    connectionToDB.connect();
+    let tatCaSp = [];
+    //lay ghi chu
+    for (let i in req.body) {
+        //cap nhat ghi chu
+        if (i.indexOf("gc-") == 0) {
+            tatCaSp[i.replace("gc-", "")] = {
+                ...tatCaSp[i.replace("gc-", "")],
+                ghiChu: req.body[i]
+            }
+        }
+    }
+    //lay xem la hang da xuat hay chua
+    //1 phan tu
+    if ((typeof req.body.done).toLowerCase() == 'string') {
+        tatCaSp[req.body.done].daXuat = true;
+    }
+    //nhieu phan tu
+    else
+    if ((typeof req.body.done).toLowerCase() == 'object') {
+        for (let i in req.body.done) {
+            tatCaSp[req.body.done[i]].daXuat = true;
+        }
+    }
+
+    let allPromise = [];
+    for (let i in tatCaSp) {
+        if (tatCaSp[i].daXuat) {
+            allPromise.push(modelHH.updateStatusHangHoaXuat(connectionToDB, i, trangThaiHangHoa.DaXuat, tatCaSp[i].ghiChu));
+        } else {
+            allPromise.push(modelHH.updateStatusHangHoaXuat(connectionToDB, i, trangThaiHangHoa.ChoXuat, tatCaSp[i].ghiChu));
+        }
+    }
+    Promise.all(allPromise)
+        .then(async () => {
+            //neu tat ca hang hoa trong don da duoc xuat thi doi trang thai hang hoa thanh da xuat
+            let maKhoHang = '0';
+            try {
+                maKhoHang = req.user.maKhoHienHanh;
+                modelDH.getLichXuat(connectionToDB, maKhoHang, (error, dsDonHang) => {
+                    if (error) {
+                        console.log(error)
+                        throw error;
+                    }
+                    dsDonHang = dsDonHang[0];
+                    allPromise = [];
+                    let maDonHangDaQua = '';
+                    for (let i = 0; i < dsDonHang.length; i++) {
+                        if (dsDonHang[i].DonHang.trangThai == trangThaiDonHang.ChuaHoanThanh && dsDonHang[i].DonHang.maDonHang != maDonHangDaQua) {
+                            allPromise.push(modelDH.getDonXuat(connectionToDB, dsDonHang[i].DonHang.maDonHang));
+                            maDonHangDaQua = dsDonHang[i].DonHang.maDonHang;
+                        }
+                    }
+                    Promise.all(allPromise)
+                        .then(results => {
+                            for (let k = 0; k < results.length; k++) {
+                                //neu phat hien don hang nao da duoc nhap het thi phai thay doi trang thai thanh da xuat
+                                //duyet qua ds hang hoa
+                                let i = 0;
+                                for (i = 0; i < results[k].length; i++) {
+                                    if (results[k][i].HangHoa.trangThai == trangThaiHangHoa.ChoXuat) {
+                                        break;
+                                    }
+                                }
+                                if (i == results[k].length) {
+                                    //cap nhat lai trang thai cua hang hoa
+                                    modelDH.updateTrangThaiDonHang(connectionToDB, results[k][0].DonHang.maDonHang, trangThaiDonHang.DaHoanThanh)
+                                }
+                            }
+                            res.redirect('/lich-xuat-hang')
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            res.redirect('/lich-xuat-hang')
+                        })
+                });
+            } catch (mess) {
+                console.log(mess);
+                return res.redirect('/lich-xuat-hang');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/lich-xuat-hang')
+        })
 }

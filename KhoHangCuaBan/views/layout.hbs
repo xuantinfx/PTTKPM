@@ -118,17 +118,16 @@
                         </li>
                     </ul>
                     <div class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Xuantinfx
+                        <a class="nav-link dropdown-toggle" href="#" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.tenTaiKhoan}}
                             <i class="fas fa-user-tie ml-2"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="profile">
                             <a class="dropdown-item" href="/thongtincanhan">Cá nhân</a>
-                            <a class="dropdown-item" href="#">Đăng xuất</a>
+                            <form action="/dang-xuat" method="post">
+                                <button type="submit" class="btn nav-link btn-link dropdown-item ml-2">Đăng xuất</button>
+                            </form>
                         </div>
                     </div>
-                    <form action="/dang-xuat" method="post">
-                        <button type="submit" class="btn nav-link btn-link">Đăng xuất</button>
-                    </form>
                 </div>
             </nav>
             <!-- Content -->

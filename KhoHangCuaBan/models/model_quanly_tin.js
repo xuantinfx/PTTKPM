@@ -8,6 +8,9 @@ module.exports = {
                 if (err) {
                     return reject(err);
                 } else {
+                    if(rows[0][0] == undefined) {
+                        return reject(new Error("Ket qua rong"))
+                    }
                     return resolve(rows[0][0].maKhoHang)
                 }
             })

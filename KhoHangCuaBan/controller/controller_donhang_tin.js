@@ -7,6 +7,18 @@ const trangThaiDonHang = {
     DaHoanThanh: 'Đã hoàn thành'
 }
 
+const beautifyDate = (date) => {
+    if(!date)
+        return null;
+    
+    date = new Date(date);
+    let d = date.getDate();
+    if (d < 10) d = '0' + d;
+    let m = date.getMonth() + 1;
+    if (m < 10) m = '0' + m;
+    return `${date.getFullYear()}-${m}-${d}`;
+}
+
 module.exports.getDonHangNhap = async (req, res, next) => {
     const connectionToDB = req.connectionToDB;
     let tuCach = '';
@@ -15,32 +27,23 @@ module.exports.getDonHangNhap = async (req, res, next) => {
     try {
         //Lấy thông tin người đang vào
         //la chu kho thì dẫn chủ kho về /dashboard
-        switch (req.loaiNguoiDung) {
+        maKhoHang = req.user.maKhoHienHanh;
+        switch (req.user.loaiNguoiDung) {
             case 'CK':
-                throw "ChuKho"
+                tuCach = "Chủ kho"
                 break;
             case 'QL':
-                try {
                     tuCach = 'Quản lý';
-                    maKhoHang = await modelQL.qlLayMaKho(connectionToDB, req.maNhanVien);
-                } catch (error) {
-                    throw error;
-                }
                 break;
             case 'NV':
-                try {
                     tuCach = 'Nhân viên';
-                    maKhoHang = await modelNVK.nvkLayMaKho(connectionToDB, req.maNhanVien);
-                } catch (error) {
-                    throw error;
-                }
                 break;
 
             default:
                 throw (new Error('Không xác định được loại nhân viên'));
         }
 
-        modelDH.getDonNhap(connectionToDB, maKhoHang, (error, results) => {
+        modelDH.getDonNhapCuaKho(connectionToDB, maKhoHang, (error, results) => {
             if (error) {
                 throw error;
             };
@@ -68,8 +71,9 @@ module.exports.getDonHangNhap = async (req, res, next) => {
                         //lan dau insert
                         if (dsDonNhap[i].ngayLapDon == undefined) {
                             dsDonNhap[i].ngayLapDon = (new Date(results[j].DonHang.ngayLapDon)).toLocaleDateString();
-                            dsDonNhap[i].ngayNhap = results[j].DonNhap.ngayNhap ? (new Date(results[j].DonNhap.ngayNhap)).toLocaleDateString() : null;
+                            dsDonNhap[i].ngayNhap = beautifyDate(results[j].DonNhap.ngayNhap);
                             dsDonNhap[i].nguoiLap = results[j].NguoiDung.hoTen;
+                            dsDonNhap[i].trangThai = results[j].DonHang.trangThai;
                             dsDonNhap[i].dsHangHoa = [{
                                 tenHangHoa: results[j].HangHoa.tenHangHoa,
                                 soLuong: results[j].HangHoa.soLuong,
@@ -101,22 +105,21 @@ module.exports.getDonHangNhap = async (req, res, next) => {
                 let tong = 0;
                 for(let j = 0; j < dsDonNhap[i].dsHangHoa.length; j++){
                     tong += dsDonNhap[i].dsHangHoa[j].thanhTien;
+                    dsDonNhap[i].dsHangHoa[j].thanhTien = dsDonNhap[i].dsHangHoa[j].thanhTien.toLocaleString();
+                    dsDonNhap[i].dsHangHoa[j].donGia = dsDonNhap[i].dsHangHoa[j].donGia.toLocaleString();
                 }
-                dsDonNhap[i].tongTien = tong;
+                dsDonNhap[i].tongTien = tong.toLocaleString();
             }
             //res.end(JSON.stringify(dsDonNhap))
             res.render('donhangnhap', {
                 donHangNhap: true,
                 dsDonNhap,
-                tuCach
+                tuCach,
+                user: req.user
             });
         })
     } catch (mess) {
         connectionToDB.end();
-        if(mess == 'ChuKho'){
-            res.redirect('/');
-        }
-        console.log(err);
         return next()
     }
 }
