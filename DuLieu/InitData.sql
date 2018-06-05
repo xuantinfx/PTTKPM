@@ -1,15 +1,17 @@
 -- insert nguoidung
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('0', 'Nguyễn Văn A', '215439032', '0965299820', 'nva@gmail.com', 'nguyenvana', 'nguyenvana');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('1', 'Nguyễn Văn B', '215439033', '0965299821', 'nvb@gmail.com', 'nguyenvanb', 'nguyenvanb');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('2', 'Nguyễn Văn C', '215439034', '0965299822', 'nvc@gmail.com', 'nguyenvanc', 'nguyenvanc');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('3', 'Nguyễn Văn D', '215439035', '0965299823', 'nvd@gmail.com', 'nguyenvand', 'nguyenvand');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('4', 'Nguyễn Văn E', '215439036', '0965299824', 'nve@gmail.com', 'nguyenvane', 'nguyenvane');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('5', 'Nguyễn Văn F', '215439037', '0965299825', 'nvf@gmail.com', 'nguyenvanf', 'nguyenvanf');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('6', 'Nguyễn Văn G', '215439038', '0965299826', 'nvg@gmail.com', 'nguyenvang', 'nguyenvang');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('7', 'Nguyễn Văn H', '215439039', '0965299827', 'nvh@gmail.com', 'nguyenvanh', 'nguyenvanh');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('8', 'Nguyễn Văn I', '215439030', '0965299828', 'nvi@gmail.com', 'nguyenvani', 'nguyenvani');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('9', 'Nguyễn Văn J', '215439040', '0965299829', 'nvj@gmail.com', 'nguyenvanj', 'nguyenvanj');
-INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`) VALUES ('10', 'Nguyễn Văn K', '215439041', '0965299830', 'nvk@gmail.com', 'nguyenvank', 'nguyenvank');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('0', 'Nguyễn Văn A', '215439032', '0965299820', 'nva@gmail.com', 'nguyenvana', 'nguyenvana','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('1', 'Nguyễn Văn B', '215439033', '0965299821', 'nvb@gmail.com', 'nguyenvanb', 'nguyenvanb','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('2', 'Nguyễn Văn C', '215439034', '0965299822', 'nvc@gmail.com', 'nguyenvanc', 'nguyenvanc','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('3', 'Nguyễn Văn D', '215439035', '0965299823', 'nvd@gmail.com', 'nguyenvand', 'nguyenvand','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('4', 'Nguyễn Văn E', '215439036', '0965299824', 'nve@gmail.com', 'nguyenvane', 'nguyenvane','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('5', 'Nguyễn Văn F', '215439037', '0965299825', 'nvf@gmail.com', 'nguyenvanf', 'nguyenvanf','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('6', 'Nguyễn Văn G', '215439038', '0965299826', 'nvg@gmail.com', 'nguyenvang', 'nguyenvang','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('7', 'Nguyễn Văn H', '215439039', '0965299827', 'nvh@gmail.com', 'nguyenvanh', 'nguyenvanh','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('8', 'Nguyễn Văn I', '215439030', '0965299828', 'nvi@gmail.com', 'nguyenvani', 'nguyenvani','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('9', 'Nguyễn Văn J', '215439040', '0965299829', 'nvj@gmail.com', 'nguyenvanj', 'nguyenvanj','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('10', 'Nguyễn Văn K', '215439041', '0965299830', 'nvk@gmail.com', 'nguyenvank', 'nguyenvank','false');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('11', 'Chú Bảy', '215439040', '0965299829', 'cr7@gmail.com', 'chubay', 'chubay','true');
+INSERT INTO `khohangcuaban`.`NguoiDung` (`maNguoiDung`, `hoTen`, `cmnd`, `sdt`, `email`, `tenTaiKhoan`, `matKhau`, `laTaiKhoanMoi`) VALUES ('12', 'Chú Tám', '215439041', '0965299830', 'cr8@gmail.com', 'chutam', 'chutam','true');
 
 
 -- insert ChuKho

@@ -12,6 +12,7 @@ CREATE TABLE NguoiDung (
     email TEXT,
     tenTaiKhoan TEXT,
     matKhau TEXT,
+    laTaiKhoanMoi TEXT,
     PRIMARY KEY(maNguoiDung)
 );
 
