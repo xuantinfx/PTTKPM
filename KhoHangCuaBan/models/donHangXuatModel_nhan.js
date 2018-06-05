@@ -6,7 +6,7 @@ exports.xemDsDonHangXuat = function (req, callback) {
         //chạy query
         async.waterfall([
             function (cb) {
-                req.connectionToDB.query(`CALL xemDsDonHangXuat(${req.maKhoHang});`, function (err, results, fields) {
+                req.connectionToDB.query(`CALL xemDsDonHangXuat('${req.user.maKhoHienHanh}');`, function (err, results, fields) {
                     //gọi đến hàm tiếp theo trong mảng async.waterfall
                     if (err) cb(err, null);
                     else {

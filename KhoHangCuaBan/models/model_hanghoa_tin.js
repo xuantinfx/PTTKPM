@@ -26,5 +26,11 @@ module.exports = {
                 resole(result);
             })
         })
+    },
+    layDsMatHangDaNhap: (connection, callback) =>{
+        connection.query('CALL layDsMatHangDaNhap', (err, results) => {
+            if (err) callback(err, null);
+            callback(null, results[0]);
+        })
     }
 }
