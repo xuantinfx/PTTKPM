@@ -48,8 +48,8 @@ INSERT INTO `khohangcuaban`.`NhanVienKho` (`maNhanVien`, `maQuanLy`, `maKhoHang`
 
 
 -- insert HangHoa
-INSERT INTO `khohangcuaban`.`HangHoa` (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) VALUES ('0', 'Mì Kokomi', '0', '30', NULL, NULL, '5000', 'Gói', 'Chờ nhập');
-INSERT INTO `khohangcuaban`.`HangHoa` (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) VALUES ('1', 'Mì Hảo Hảo', '0', '30', NULL, NULL, '5000', 'Gói', 'Chờ nhập');
+INSERT INTO `khohangcuaban`.`HangHoa` (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) VALUES ('0', 'Mì Kokomi', '0', '30', '2018-3-15', '2019-3-15', '5000', 'Gói', 'Chờ nhập');
+INSERT INTO `khohangcuaban`.`HangHoa` (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) VALUES ('1', 'Mì Hảo Hảo', '0', '30', '2018-3-15', '2019-3-15', '5000', 'Gói', 'Chờ nhập');
 INSERT INTO `khohangcuaban`.`HangHoa` (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) VALUES ('2', 'Mì Lẩu Thái', '0', '100', '2018-3-15', '2019-3-15', '5000', 'Gói', 'Đã nhập');
 INSERT INTO `khohangcuaban`.`HangHoa` (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) VALUES ('3', 'Mì Gấu Đỏ', '0', '100', '2018-3-15', '2019-3-15', '5000', 'Gói', 'Đã nhập');
 INSERT INTO `khohangcuaban`.`HangHoa` (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) VALUES ('4', 'Mì Kokomi', '0', '100', '2018-3-15', '2019-3-15', '5000', 'Gói', 'Đã nhập');
@@ -64,11 +64,11 @@ INSERT INTO `khohangcuaban`.`DonHang` (`maDonHang`, `maKhoHang`, `ngayLapDon`, `
 INSERT INTO `khohangcuaban`.`DonHang` (`maDonHang`, `maKhoHang`, `ngayLapDon`, `nguoiLapDon`, `trangThai`) VALUES ('3', '0', '2018-5-20', 'nv-0', 'Đã hoàn thành');
 
 -- insert DonNhap
-INSERT INTO `khohangcuaban`.`DonNhap` (`maDonHang`) VALUES ('0');
+INSERT INTO `khohangcuaban`.`DonNhap` (`maDonHang`, `ngayNhap`) VALUES ('0', '2018-3-15');
 INSERT INTO `khohangcuaban`.`DonNhap` (`maDonHang`, `ngayNhap`) VALUES ('1', '2018-3-15');
 
 -- insert DonXuat
-INSERT INTO `khohangcuaban`.`DonXuat` (`maDonHang`) VALUES ('2');
+INSERT INTO `khohangcuaban`.`DonXuat` (`maDonHang`, `ngayXuat`) VALUES ('2', '2018-5-25');
 INSERT INTO `khohangcuaban`.`DonXuat` (`maDonHang`, `ngayXuat`) VALUES ('3', '2018-5-25');
 
 -- insert ChiTietDonNhap

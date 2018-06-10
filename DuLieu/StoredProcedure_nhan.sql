@@ -130,10 +130,10 @@ DELIMITER ;
 -- lấy danh sách mặt hàng đã nhập
 DELIMITER //
 DROP PROCEDURE IF EXISTS `layDsMatHangDaNhap` //
-CREATE PROCEDURE layDsMatHangDaNhap()
+CREATE PROCEDURE layDsMatHangDaNhap(IN ma_Kho VARCHAR(10))
 	BEGIN
 		SELECT * FROM HangHoa
-        WHERE trangThai = 'Đã nhâp';
+        WHERE trangThai = 'Đã nhâp' AND maKhoHang = ma_Kho AND (soLuong > 0);
 	END //
 DELIMITER ;
 
@@ -211,5 +211,41 @@ CREATE PROCEDURE insertChiTietDonHangXuat(IN ma_Don_Hang VARCHAR(10), IN ma_Hang
 	END //
 DELIMITER ;
 -- call insertChiTietDonHangXuat('5', '11', '10');
+
+-- insert hàng hóa chờ nhập
+DELIMITER //
+DROP PROCEDURE IF EXISTS `insertHangHoaChoNhap` //
+CREATE PROCEDURE insertHangHoaChoNhap(IN ten_Hang_hoa TEXT, IN ma_Kho_hang VARCHAR(10), IN so_Luong INT, IN ngay_Nhap DATE, IN ngay_Het_han DATE, IN don_Gia INT, IN don_Vi TEXT)
+	BEGIN
+		SET @maHangHoa = cast((SELECT max(cast(maHangHoa AS unsigned)) + 1 FROM HangHoa) AS CHAR(10));
+        SET @trangThai = 'Chờ xuất';
+        
+        INSERT INTO `khohangcuaban`.`HangHoa`
+        (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `trangThai`) 
+        VALUES (@maHangHoa, ten_Hang_hoa, ma_Kho_hang, so_Luong, ngay_Nhap, ngay_Het_han, don_Gia, don_Vi, @trangThai);
+
+		-- trả về @maHangHoa
+        SELECT @maHangHoa;
+	END //
+DELIMITER ;
+
+-- insert đơn hàng nhập mới
+DELIMITER //
+DROP PROCEDURE IF EXISTS `insertDonHangNhapMoi` //
+CREATE PROCEDURE insertDonHangNhapMoi(IN ma_Don_Hang VARCHAR(10), IN ngay_Nhap DATE)
+	BEGIN
+		INSERT INTO `khohangcuaban`.`DonNhap` (`maDonHang`, `ngayNhap`) VALUES (ma_Don_Hang, ngay_Nhap);
+	END //
+DELIMITER ;
+
+
+-- insert chi tiết đơn hàng nhập
+DELIMITER //
+DROP PROCEDURE IF EXISTS `insertChiTietDonHangNhap` //
+CREATE PROCEDURE insertChiTietDonHangNhap(IN ma_Don_Hang VARCHAR(10), IN ma_Hang_Hoa VARCHAR(10), IN so_Luong INT)
+	BEGIN
+		INSERT INTO `khohangcuaban`.`ChiTietDonNhap` (`maDonHang`, `maHangHoa`, `soLuong`) VALUES (ma_Don_Hang, ma_Hang_Hoa, so_Luong);
+	END //
+DELIMITER ;
 
                       
