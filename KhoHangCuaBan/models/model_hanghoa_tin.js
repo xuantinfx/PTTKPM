@@ -27,8 +27,8 @@ module.exports = {
             })
         })
     },
-    layDsMatHangDaNhap: (connection, callback) =>{
-        connection.query('CALL layDsMatHangDaNhap', (err, results) => {
+    layDsMatHangDaNhap: (connection, maKhoHienHanh, callback) =>{
+        connection.query(`CALL layDsMatHangDaNhap('${maKhoHienHanh}')`, (err, results) => {
             if (err) callback(err, null);
             callback(null, results[0]);
         })

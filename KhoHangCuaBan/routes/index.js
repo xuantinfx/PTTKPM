@@ -11,6 +11,7 @@ const controller_donhang_tin = require('../controller/controller_donhang_tin')
 const controller_hanghoa_tin = require('../controller/controller_hanghoa_tin')
 const controller_nhanvien_tin = require('../controller/controller_nhanvien_tin')
 const xacThucController = require('../controller/xacThucController');
+const donHangNhapController = require('../controller/donHangNhapController_nhan');
 
 
 router.get('/', xacThucController.daDangNhap, function (req, res, next) {
@@ -45,6 +46,7 @@ router.get('/lich-xuat-hang', controller_lichxuathang_tin.getLichXuatHang);
 router.post('/lich-xuat-hang', controller_lichxuathang_tin.postXuatHang);
 //Don hang nhap
 router.get('/don-hang-nhap', controller_donhang_tin.getDonHangNhap);
+router.post('/don-hang-nhap/them', donHangNhapController.themDonHangNhap);
 //Hang hoa
 router.get('/hang-hoa', controller_hanghoa_tin.getHangHoa);
 //Nhan vien

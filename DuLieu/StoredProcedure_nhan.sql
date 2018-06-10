@@ -146,6 +146,70 @@ CREATE PROCEDURE updateSoLuongHangHoa(IN ma_hang_hoa VARCHAR(10), IN so_luong IN
 	END //
 DELIMITER ;
 
-CALL updateSoLuongHangHoa('2', -10);
+-- insert hàng hóa chờ xuất, clone từ 1 hàng hóa đã nhập
+DELIMITER //
+DROP PROCEDURE IF EXISTS `insertHangHoaChoXuat` //
+CREATE PROCEDURE insertHangHoaChoXuat(IN ma_hang_hoa_cho_nhap VARCHAR(10), IN so_luong_nhap INT)
+	BEGIN
+		SET @maHangHoa = cast((SELECT max(cast(maHangHoa AS unsigned)) + 1 FROM HangHoa) AS CHAR(10));
+        SET @tenHangHoa = NULL;
+        SET @maKhoHang = NULL;
+        SET @soLuong = so_luong_nhap;
+        SET @ngayNhap = NULL;
+        SET @ngayHetHan = NULL;
+        SET @donGia = NULL;
+        SET @donVi = NULL;
+        SET @ghiChu = NULL;
+        SET @trangThai = 'Chờ xuất';
+		
+        SELECT tenHangHoa, maKhoHang, ngayNhap, ngayHetHan, donGia, donVi, ghiChu
+		INTO @tenHangHoa,  @maKhoHang, @ngayNhap, @ngayHetHan, @donGia, @donVi, @ghiChu
+        FROM HangHoa WHERE maHangHoa = ma_hang_hoa_cho_nhap;
+        
+        INSERT INTO `khohangcuaban`.`HangHoa`
+        (`maHangHoa`, `tenHangHoa`, `maKhoHang`, `soLuong`, `ngayNhap`, `ngayHetHan`, `donGia`, `donVi`, `ghiChu`, `trangThai`) 
+        VALUES (@maHangHoa, @tenHangHoa, @maKhoHang, @soLuong, @ngayNhap, @ngayHetHan, @donGia, @donVi, @ghiChu, @trangThai);
+
+		-- trả về @maHangHoa
+        SELECT @maHangHoa;
+	END //
+DELIMITER ;
+-- CALL insertHangHoaChoXuat('1', 10);
+
+-- insert đơn hàng mới
+DELIMITER //
+DROP PROCEDURE IF EXISTS `insertDonHangMoi` //
+CREATE PROCEDURE insertDonHangMoi(IN ma_Kho_hang VARCHAR(10), IN ngay_Lap_Don DATE, IN nguoi_Lap_Don VARCHAR(10), IN trang_Thai TEXT)
+	BEGIN
+		SET @maDonHang = cast((SELECT max(cast(maDonHang AS unsigned)) + 1 FROM DonHang) AS CHAR(10));
+        
+        INSERT INTO `khohangcuaban`.`DonHang` (`maDonHang`, `maKhoHang`, `ngayLapDon`, `nguoiLapDon`, `trangThai`) 
+        VALUES (@maDonHang, ma_Kho_hang, ngay_Lap_Don, nguoi_Lap_Don, trang_Thai);
+        
+        -- trả về mã đơn hàng mới
+        SELECT @maDonHang;
+	END //
+DELIMITER ;
+-- CALL insertDonHangMoi('0', '2018-06-04', 'nv-0', 'Ố là la');
+
+-- insert đơn hàng xuất mới
+DELIMITER //
+DROP PROCEDURE IF EXISTS `insertDonHangXuatMoi` //
+CREATE PROCEDURE insertDonHangXuatMoi(IN ma_Don_Hang VARCHAR(10), IN ngay_Xuat DATE)
+	BEGIN
+		INSERT INTO `khohangcuaban`.`DonXuat` (`maDonHang`, `ngayXuat`) VALUES (ma_Don_Hang, ngay_Xuat);
+	END //
+DELIMITER ;
+-- CALL insertDonHangXuatMoi('5', '2018-6-5');
+
+-- insert chi tiết đơn hàng xuất
+DELIMITER //
+DROP PROCEDURE IF EXISTS `insertChiTietDonHangXuat` //
+CREATE PROCEDURE insertChiTietDonHangXuat(IN ma_Don_Hang VARCHAR(10), IN ma_Hang_Hoa VARCHAR(10), IN so_Luong INT)
+	BEGIN
+		INSERT INTO `khohangcuaban`.`ChiTietDonXuat` (`maDonHang`, `maHangHoa`, `soLuong`) VALUES (ma_Don_Hang, ma_Hang_Hoa, so_Luong);
+	END //
+DELIMITER ;
+-- call insertChiTietDonHangXuat('5', '11', '10');
 
                       
