@@ -8,6 +8,7 @@ exports.xem = (req, res) => {
     //gọi model tương ứng
     donHangXuatModel.xemDsDonHangXuat(req, function (err, data) {
         if (err) throw err;
+        if (data)
         //tính tổng tiền mỗi đơn hàng
         data.forEach(donHangXuat => {
             let sum = 0;
@@ -30,7 +31,7 @@ exports.xem = (req, res) => {
 }
 
 exports.layDsMatHangDaNhap = function (req, res) {
-    hangHoaModel.layDsMatHangDaNhap(req.connectionToDB, (err, dsMatHang) => {
+    hangHoaModel.layDsMatHangDaNhap(req.connectionToDB, req.user.maKhoHienHanh, (err, dsMatHang) => {
         if (err) throw err;
         if (dsMatHang) {
             //tạo ra kết quả trả về {dsOption: <option></option>, dsNgayNhap: [], dsNgayHetHan: [], dsSoLuong: []}
@@ -62,8 +63,9 @@ exports.themDonHangXuat = function (req, res) {
     let data = {
         ngayXuat: req.body.ngayXuat,
         maQuanLy: req.user.maQuanLy,
-        maSo: (req.body.maSo.length == 1) ? [req.body.maSo] : req.body.maSo,
-        soLuong: (req.body.soLuong.length == 1) ? [req.body.soLuong] : req.body.soLuong,
+        maSo: (!Array.isArray(req.body.maSo)) ? [req.body.maSo] : req.body.maSo,
+        soLuong: (!Array.isArray(req.body.soLuong)) ? [req.body.soLuong] : req.body.soLuong,
+        maKhoHienHanh: req.user.maKhoHienHanh
     }
     //chỉ có quản lí mói được sử dụng chức năng này 
     if (!data.maQuanLy) return res.redirect('/don-hang-xuat');
@@ -85,9 +87,16 @@ exports.themDonHangXuat = function (req, res) {
     }
     console.log('data o donHangXuatController:', data);
     donHangXuatModel.themDonHangXuat(req.connectionToDB, data, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-        res.redirect('/don-hang-xuat');
+        if (err) 
+        {
+            throw err;
+            res.end('false');
+        }
+        else {
+            console.log(result);
+            res.end('true');
+        }
+        
     })
 
 }
