@@ -11,6 +11,7 @@ const controller_donhang_tin = require('../controller/controller_donhang_tin')
 const controller_hanghoa_tin = require('../controller/controller_hanghoa_tin')
 const controller_nhanvien_tin = require('../controller/controller_nhanvien_tin')
 const xacThucController = require('../controller/xacThucController');
+const nguoiDungController_tin = require('../controller/nguoiDungController_tin')
 
 
 router.get('/', xacThucController.daDangNhap, function (req, res, next) {
@@ -50,7 +51,9 @@ router.get('/hang-hoa', controller_hanghoa_tin.getHangHoa);
 //Nhan vien
 //giả sử route này quản lí mới vào được
 router.get('/nhan-vien', xacThucController.daDangNhap, xacThucController.laQuanLy, controller_nhanvien_tin.getNhanVien);
-
+//kiem tra xem user co ton tai hay k
+router.get('/kiem-tra-user-ton-tai', nguoiDungController_tin.getKiemTraUserTonTai);
+router.get('/dang-ky', nguoiDungController_tin.getDangKy)
 /****************************************************************/
 
 module.exports = router;

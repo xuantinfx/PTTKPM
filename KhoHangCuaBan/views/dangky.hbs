@@ -1,8 +1,27 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+    <title>Đăng ký tài khoản mới hệ thống nhà kho của bạn</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+</head>
+
+<body>
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center mt-5">
+        <h1>Đăng ký tài khoản <b>Kho hàng của bạn</b></h1>
+        </div>
+        <div class="row mt-5">
             <div class="col-md-10 offset-md-1">
-                <form action="" method="post">
+                <form action="/dang-ky" method="POST" onsubmit="return onSubmitDk(this)">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -11,9 +30,11 @@
                                         <label for="hovaten">Nhập họ và tên</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="hovaten"><i class="far fa-address-card"></i></span>
+                                                <span class="input-group-text" id="hovaten">
+                                                    <i class="far fa-address-card"></i>
+                                                </span>
                                             </div>
-                                            <input type="text" class="form-control" name="" id="hovaten" placeholder="Nhập họ và tên của bạn">
+                                            <input type="text" class="form-control" name="hoTen" id="hovaten" placeholder="Nhập họ và tên của bạn">
                                         </div>
                                     </div>
                                 </div>
@@ -22,11 +43,13 @@
                                         <label for="">Tài khoản loại</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="chukho"><i class="far fa-hand-point-right"></i></span>
+                                                <span class="input-group-text" id="chukho">
+                                                    <i class="far fa-hand-point-right"></i>
+                                                </span>
                                             </div>
-                                            <select class="form-control" name="" id="chukho">
-                                                <option>Chủ kho</option>
-                                                <option>Quản lý hoặc Nhân Viên Kho</option>
+                                            <select class="form-control" name="loaiND" id="chukho">
+                                                <option value="CK">Chủ kho</option>
+                                                <option selected value="NV">Quản lý hoặc Nhân Viên Kho</option>
                                             </select>
                                         </div>
                                     </div>
@@ -38,9 +61,11 @@
                                         <label for="cmnd">Nhập số chứng minh nhân dân</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i class="fab fa-bandcamp"></i></span>
+                                                <span class="input-group-text" id="">
+                                                    <i class="fab fa-bandcamp"></i>
+                                                </span>
                                             </div>
-                                            <input type="text" name="" id="cmnd" class="form-control" placeholder="Nhập số chứng minh nhân dân">
+                                            <input type="text" name="cmnd" id="cmnd" class="form-control" placeholder="Nhập số chứng minh nhân dân">
                                         </div>
                                     </div>
                                 </div>
@@ -49,9 +74,11 @@
                                         <label for="sdt">Nhập số điện thoại</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+                                                <span class="input-group-text" id="">
+                                                    <i class="fas fa-phone"></i>
+                                                </span>
                                             </div>
-                                            <input type="text" name="" id="sdt" class="form-control" placeholder="Nhập số điện thoại">
+                                            <input type="text" name="sdt" id="sdt" class="form-control" placeholder="Nhập số điện thoại">
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +89,11 @@
                                         <label for="user">Nhập tên tài khoản</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i class="fas fa-user-tie"></i></span>
+                                                <span class="input-group-text" id="">
+                                                    <i class="fas fa-user-tie"></i>
+                                                </span>
                                             </div>
-                                            <input type="text" name="" id="user" class="form-control" placeholder="Nhập tên tài khoản">
+                                            <input type="text" name="username" id="user" class="form-control" placeholder="Nhập tên tài khoản">
                                         </div>
                                     </div>
                                 </div>
@@ -73,9 +102,11 @@
                                         <label for="email">Nhập email</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i class="fas fa-envelope"></i></span>
+                                                <span class="input-group-text" id="">
+                                                    <i class="fas fa-envelope"></i>
+                                                </span>
                                             </div>
-                                            <input type="email" name="" id="email" class="form-control" placeholder="Nhập email">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Nhập email">
                                         </div>
                                     </div>
                                 </div>
@@ -86,9 +117,11 @@
                                         <label for="pass">Nhập password</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i class="fas fa-key"></i></span>
+                                                <span class="input-group-text" id="">
+                                                    <i class="fas fa-key"></i>
+                                                </span>
                                             </div>
-                                            <input type="password" class="form-control" name="" id="pass" placeholder="Nhập password">
+                                            <input type="password" class="form-control" name="matKhau" id="pass" placeholder="Nhập password">
                                         </div>
                                     </div>
                                 </div>
@@ -97,19 +130,25 @@
                                         <label for="pass1">Nhập lại password</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="chukho"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                                                <span class="input-group-text" id="chukho">
+                                                    <i class="fa fa-unlock" aria-hidden="true"></i>
+                                                </span>
                                             </div>
-                                            <input type="password" class="form-control" name="" id="pass1" placeholder="Nhập lại password">
+                                            <input type="password" class="form-control" name="reMatKhau" id="pass1" placeholder="Nhập lại password">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a href="#">Điều khoản sử dụng</a>
+                                    <p class="text-danger" id="error"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="" data-toggle="modal" data-target="#dieu-khoan">Điều khoản sử dụng</a>
                                     <div class="form-inline">
-                                        <input type="checkbox" class="form-control mr-2" name="" id="dongy">
-                                        <label for="dongy">Đồng ý với điều khoản</label>
+                                        <input type="checkbox" class="form-control mr-2" value="dongy" name="dongYDKSD" id="dongy"><label for="dongy">Đồng ý với điều khoản</label>
                                     </div>
                                 </div>
                             </div>
@@ -125,3 +164,78 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="dieu-khoan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Điều khoản sử dụng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    abcddddd
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        let fo;
+        const onSubmitDk = (form) => {
+            fo = form;
+            let error = $("#error");
+
+            if($(form.hoTen).val() == '') {
+                error.text("Họ tên không được rỗng")
+                return false;
+            }
+            if($(form.loaiND).val() == '') {
+                error.text("Loại người dùng không được rỗng")
+                return false;
+            }
+            if($(form.cmnd).val() == '') {
+                error.text("Số CMND không được rỗng")
+                return false;
+            }
+            if($(form.sdt).val() == '') {
+                error.text("SĐT không được rỗng")
+                return false;
+            }if($(form.username).val() == '') {
+                error.text("Username không được rỗng")
+                return false;
+            }if($(form.email).val() == '') {
+                error.text("Email không được rỗng")
+                return false;
+            }
+            if($(form.matKhau).val() == '') {
+                error.text("Mật khẩu không được rỗng")
+                return false;
+            }
+            if($(form.reMatKhau).val() == '') {
+                error.text("Mật khẩu nhập lại không được rỗng")
+                return false;
+            }
+            if($(form.reMatKhau).val() != $(form.matKhau).val()) {
+                error.text("Mật khẩu nhập lại và mật khẩu không khơp")
+                return false;
+            }
+            if($(form.dongYDKSD).val() == false) {
+                error.text("Bạn phải đồng ý điều khoản để tiếp tục đăng ký")
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
