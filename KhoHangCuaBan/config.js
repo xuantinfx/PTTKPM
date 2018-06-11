@@ -11,8 +11,8 @@ module.exports = {
 	mysql: {
 		host: 'localhost',
 		port: '3306',
-		user: 'root',
-		pass: 'root',
+		user: 'ddnn',
+		pass: 'Number123',
 		database: 'khohangcuaban'
 	},
 }
