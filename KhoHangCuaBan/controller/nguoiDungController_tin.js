@@ -24,3 +24,8 @@ module.exports.getKiemTraUserTonTai = (req, res, next) => {
 module.exports.getDangKy = (req, res, next) => {
     res.render("dangky", {layout: ""})
 }
+
+module.exports.postDangKy = (req, res, next) => {
+    console.log(req.body);
+    res.end("acb")
+}

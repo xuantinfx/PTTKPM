@@ -56,6 +56,7 @@ router.get('/nhan-vien', xacThucController.daDangNhap, xacThucController.laQuanL
 //kiem tra xem user co ton tai hay k
 router.get('/kiem-tra-user-ton-tai', nguoiDungController_tin.getKiemTraUserTonTai);
 router.get('/dang-ky', nguoiDungController_tin.getDangKy)
+router.post('/dang-ky', nguoiDungController_tin.postDangKy)
 /****************************************************************/
 
 module.exports = router;
