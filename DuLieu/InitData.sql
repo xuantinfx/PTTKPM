@@ -28,6 +28,9 @@ INSERT INTO `khohangcuaban`.`NhanVien` (`maNhanVien`, `maNguoiDung`) VALUES ('nv
 INSERT INTO `khohangcuaban`.`NhanVien` (`maNhanVien`, `maNguoiDung`) VALUES ('nv-5', '8');
 INSERT INTO `khohangcuaban`.`NhanVien` (`maNhanVien`, `maNguoiDung`) VALUES ('nv-6', '9');
 INSERT INTO `khohangcuaban`.`NhanVien` (`maNhanVien`, `maNguoiDung`) VALUES ('nv-7', '10');
+INSERT INTO `khohangcuaban`.`NhanVien` (`maNhanVien`, `maNguoiDung`) VALUES ('nv-8', '11');
+INSERT INTO `khohangcuaban`.`NhanVien` (`maNhanVien`, `maNguoiDung`) VALUES ('nv-9', '12');
+
 
 -- insert QuanLy
 INSERT INTO `khohangcuaban`.`QuanLy` (`maNhanVien`, `maChuKhoHang`) VALUES ('nv-0', '0');
