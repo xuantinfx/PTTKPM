@@ -128,7 +128,7 @@ function KiemTraThongTinNguoiDungVaMaKho(req, username, user, done) {
 
 //nếu không xài custom verify callback thì phải đặt passport.authenticate làm middleware
 exports.dangNhap = passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/dashboard',
     failureRedirect: '/dang-nhap'
 })
 

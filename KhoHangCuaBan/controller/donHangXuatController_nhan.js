@@ -21,10 +21,18 @@ exports.xem = (req, res) => {
             donHangXuat.ngayXuat ? donHangXuat.ngayXuat = (new Date(donHangXuat.ngayXuat).toLocaleDateString("vi-VN")) : null;
         });
         //render lại giao diện, truyền thêm biến donHangXuat để active cái navbar
+        let tuCach = ""
+        if(req.user.loaiNguoiDung == 'CK') {
+            tuCach = 'Chủ kho'
+        }
+        else {
+            tuCach = 'Quản lý'
+        }
         res.render('donhangxuat', {
             dsDonHangXuat: data,
             donHangXuat: true,
-            user: req.user
+            user: req.user,
+            tuCach
         });
     });
 

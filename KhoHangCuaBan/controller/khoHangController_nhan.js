@@ -8,7 +8,14 @@ exports.xem = (req, res) => {
     khoHangModel.xemKhoTheoIdChu(req, function(err, data) {
         if (err) throw err;
         //render lại giao diện
-        res.render('khohang', {khoHang: data});
+        let tuCach = ""
+        if(req.user.loaiNguoiDung == 'CK') {
+            tuCach = 'Chủ kho'
+        }
+        else {
+            tuCach = 'Quản lý'
+        }
+        res.render('khohang', {khoHang: data, user: req.user, tuCach});
     });
 
 }

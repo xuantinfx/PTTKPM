@@ -22,7 +22,7 @@
 
 <body>
     <div id="wrapper" class="toggled">
-
+        {{#equal tuCach "Chủ kho" }}
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/" {{#if dashboard}} class="active" {{/if}}>
+                    <a href="/dashboard" {{#if dashboard}} class="active" {{/if}}>
                         <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                     </a>
@@ -87,16 +87,111 @@
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-chart-pie"></i>
-                        Biểu đồ</a>
-                </li>
-                <li>
-                    <a href="#">
                         <i class="fas fa-user-tie"></i>
                         Quản lý tài khoản</a>
                 </li>
             </ul>
         </div>
+        {{/equal}}
+        {{#equal tuCach "Quản lý" }}
+            <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Kho hàng của bạn
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard" {{#if dashboard}} class="active" {{/if}}>
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/kho-hang" {{#if khoHang}} class="active" {{/if}}>
+                        <i class="fas fa-box"></i>
+                        Kho
+                    </a>
+                </li>
+                <li>
+                    <a href="/hang-hoa" {{#if hangHoa}} class="active" {{/if}}>
+                        <i class="fas fa-cube"></i>
+                        Hàng hoá</a>
+                </li>
+                <li>
+                    <a href="/nhan-vien" {{#if nhanVien}} class="active" {{/if}}>
+                        <i class="fas fa-users"></i>
+                        Nhân viên</a>
+                </li>
+                <li>
+                    <a href="/lich-nhap-hang" {{#if lichNhaphang}} class="active" {{/if}}>
+                        <i class="far fa-calendar-alt"></i>
+                        Lịch nhập hàng
+                    </a>
+                </li>
+                <li>
+                    <a href="/lich-xuat-hang" {{#if lichXuathang}} class="active" {{/if}}>
+                        <i class="far fa-calendar-alt"></i>
+                        Lịch xuất hàng
+                    </a>
+                </li>
+                <li>
+                    <a href="/don-hang-nhap" {{#if donHangNhap}} class="active" {{/if}}>
+                        <i class="far fa-file-alt"></i>
+                        Đơn hàng nhập</a>
+                </li>
+                <li>
+                    <a href="/don-hang-xuat" {{#if donHangXuat}} class="active" {{/if}}>
+                        <i class="far fa-file-alt"></i>
+                        Đơn hàng xuất</a>
+                </li>
+                <li>
+                    <a href="/bao-cao" {{#if baoCao}} class="active" {{/if}}>
+                        <i class="fas fa-reply"></i>
+                        Báo cáo</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-bar"></i>
+                        Thống kê</a>
+                </li>
+            </ul>
+        </div>
+        {{/equal}}
+        {{#equal tuCach "Nhân viên" }}
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Kho hàng của bạn
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard" {{#if dashboard}} class="active" {{/if}}>
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/hang-hoa" {{#if hangHoa}} class="active" {{/if}}>
+                        <i class="fas fa-cube"></i>
+                        Hàng hoá</a>
+                </li>
+                <li>
+                    <a href="/lich-nhap-hang" {{#if lichNhaphang}} class="active" {{/if}}>
+                        <i class="far fa-calendar-alt"></i>
+                        Lịch nhập hàng
+                    </a>
+                </li>
+                <li>
+                    <a href="/lich-xuat-hang" {{#if lichXuathang}} class="active" {{/if}}>
+                        <i class="far fa-calendar-alt"></i>
+                        Lịch xuất hàng
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {{/equal}}
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
