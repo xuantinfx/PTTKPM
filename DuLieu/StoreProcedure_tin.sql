@@ -367,3 +367,139 @@ DELIMITER ;
 -- ---------------------------------------------------------------------
 -- ---------------------------------------------------------------------
 -- ---------------------------------------------------------------------
+
+-- kiem tra tai khoan da ton tai chua
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_layNguoiDungBangEmail` $$
+CREATE PROCEDURE `sp_layNguoiDungBangEmail`(
+	IN email TEXT
+)
+BEGIN
+	SELECT * FROM NguoiDung WHERE NguoiDung.email = email;
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- them moi nguoi dung
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertNguoiDung` $$
+CREATE PROCEDURE `sp_InsertNguoiDung`(
+	IN maNguoiDung TEXT,
+    IN hoTen TEXT,
+    IN cmnd TEXT,
+    IN sdt TEXT, 
+    IN email TEXT,
+    IN tenTaiKhoan TEXT,
+    IN matKhau TEXT,
+    IN laTaiKhoanMoi TEXT
+)
+BEGIN
+	INSERT INTO NguoiDung VALUE (maNguoiDung, hoTen, cmnd, sdt, email, tenTaiKhoan, matKhau, laTaiKhoanMoi);
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- them moi chu kho
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertChuKho` $$
+CREATE PROCEDURE `sp_InsertChuKho`(
+	IN maNguoiDung VARCHAR(10)
+)
+BEGIN
+	INSERT INTO ChuKhoHang VALUE (maNguoiDung);
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- them moi nhan vien
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertNhanVien` $$
+CREATE PROCEDURE `sp_InsertNhanVien`(
+	IN maNhanVien VARCHAR(10),
+	IN maNguoiDung VARCHAR(10)
+)
+BEGIN
+	INSERT INTO NhanVien VALUE (maNhanVien, maNguoiDung);
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- lay ds nguoi dung chua kich hoat
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_getNguoiDungChuaKichHoat` $$
+CREATE PROCEDURE `sp_getNguoiDungChuaKichHoat`(
+)
+BEGIN
+	SELECT * FROM NguoiDung WHERE laTaiKhoanMoi = 'true';
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+
+-- them moi nhan vien
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_getMaNV` $$
+CREATE PROCEDURE `sp_getMaNV`(
+	IN userName VARCHAR(10)
+)
+BEGIN
+	SELECT NhanVien.maNhanVien FROM NguoiDung JOIN NhanVien ON NguoiDung.maNguoiDung = NhanVien.maNguoiDung WHERE NguoiDung.tenTaiKhoan = userName ;
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- add Quan ly vao kho
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertQLVaoKho` $$
+CREATE PROCEDURE `sp_InsertQLVaoKho`(
+	IN maNhanVien VARCHAR(10),
+	IN maKhoHang VARCHAR(10),
+    IN maChuKho VARCHAR(10)
+)
+BEGIN
+	INSERT INTO QuanLy VALUE (maNhanVien, maChuKho);
+    UPDATE KhoHang SET quanLy = maNhanVien WHERE KhoHang.maKhoHang = maKhoHang;
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------

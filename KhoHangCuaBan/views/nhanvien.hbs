@@ -1,36 +1,38 @@
 
     <div class="container">
         <h3>Danh sách nhân viên</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Tên nhân viên</th>
-                    <th scope="col">SĐT</th>
-                    <th scope="col">Kho làm việc</th>
-                    <th scope="col">Vai trò</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each dsNhanVien}}
-                <tr>
-                    <th scope="row">{{@index}}</th>
-                    <td>{{this.tenTaiKhoan}}</td>
-                    <td>{{this.hoTen}}</td>
-                    <td>{{this.sdt}}</td>
-                    <td>{{this.tenKhoHang}} - {{this.diaChi}}</td>
-                    <td>{{#if this.maQuanLy}}Nhân viên{{else}}Quản lý{{/if}}</td>
-                </tr>
-                {{/each}}
-                <tr>
-                    <td></td>
-                    <td>
-                        <button class="btn btn-success btn-block" onclick="themFormNhanVien()">Thêm nhân viên</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <form onsubmit="return themNhanVien(this)">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Tên nhân viên</th>
+                        <th scope="col">SĐT</th>
+                        <th scope="col">Kho làm việc</th>
+                        <th scope="col">Vai trò</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each dsNhanVien}}
+                    <tr>
+                        <th scope="row">{{@index}}</th>
+                        <td>{{this.tenTaiKhoan}}</td>
+                        <td>{{this.hoTen}}</td>
+                        <td>{{this.sdt}}</td>
+                        <td>{{this.tenKhoHang}} - {{this.diaChi}}</td>
+                        <td>{{#if this.maQuanLy}}Nhân viên{{else}}Quản lý{{/if}}</td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button class="btn btn-success btn-block" onclick="themFormNhanVien()">Thêm nhân viên</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
     <!-- Optional JavaScript -->
     <script>
@@ -38,37 +40,33 @@
             let listTd = document.getElementsByTagName('tbody');
             let temp = document.createElement('tr');
             temp.innerHTML =
-                `<th scope="row">${listTd[0].children.length}</th>
+                `
+            <th scope="row">${listTd[0].children.length - 1}</th>
             <td>
-                <form action="">
-                    <div class="form-group">
-                        <input type="text" name="" id="tennhanvien" class="form-control" value='' placeholder='Nhập username nhân viên' >
-                    </div>
-                </form>
+                <div class="form-group">
+                    <input type="text" name="" id="tennhanvien" class="form-control" value='' placeholder='Nhập username nhân viên' >
+                </div>
             </td>
             <td>
             </td>
             <td>
-                <form action="">
-                    <div class="form-group">
-                        <select class="form-control" name="vitrilamviec" id="">
-                            <option>Shop Hoa Nguyễn Đình Chiểu</option>
-                            <option>Family Mart Bình Thạnh</option>
-                            <option selected>{Không}</option>
-                        </select>
-                    </div>
-                </form>
             </td>
             <td>
-                <form action="">
-                    <div class="form-group">
-                        <select class="form-control" name="quyen" id="">
-                            <option>Quản Lý</option>
-                            <option>Nhân Viên</option>
-                            <option selected>{Không}</option>
-                        </select>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <select class="form-control" name="vitrilamviec" id="vitrilamviec">
+                       {{#each dsKho}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <select class="form-control" name="quyen" id="quyen">
+                        <option selected value="QL">Quản Lý</option>
+                        <option value="NV">Nhân Viên</option>
+                    </select>
+                </div>
             </td>`;
             listTd[0].appendChild(temp);
             listTd[0].removeChild(listTd[0].children[listTd[0].children.length - 2])
@@ -76,11 +74,39 @@
             temp2.innerHTML =
                 `<td></td>
             <td>
-                <button class="btn btn-success btn-block" onclick="themNhanVien()">Xác nhận</button>
+                <button class="btn btn-secondary" type="button" onclick="huyThemNhanVien()">Hủy bỏ</button>
+                <button class="btn btn-success" type="submit">Xác nhận</button>
             </td>`
             listTd[0].appendChild(temp2)
         }
-        function themNhanVien(){
+        function huyThemNhanVien() {
+            location.reload()
+        }
+        function themNhanVien(form){
             //gọi axas để đẩy dữ liệu về server
+            //kiem tra username co dung la nhan vien chua lam cho ai k
+            let userName = $("#tennhanvien").val()
+            $.post("/nhan-vien/kiem-tra-nhan-vien-moi",{userName},data => {
+                data = JSON.parse(data)
+                if(data.status == "false") {
+                    //hien thi loi
+                    alert(data.message)
+                }
+                else {
+                    //insert
+                    let kho = $("#vitrilamviec").val()
+                    let quyen = $("#quyen").val()
+                    $.post("/nhan-vien/them-nhan-vien", {userName, kho, quyen},result => {
+                        result = JSON.parse(result);
+                        if(result.status == "success") {
+                            location.reload()
+                        }
+                        else {
+                            alert("lỗi")
+                        }
+                    })
+                }
+            })
+            return false;
         }
     </script>

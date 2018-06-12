@@ -190,7 +190,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script>
-        let fo;
         const onSubmitDk = (form) => {
             fo = form;
             let error = $("#error");
@@ -229,11 +228,32 @@
                 error.text("Mật khẩu nhập lại và mật khẩu không khơp")
                 return false;
             }
-            if($(form.dongYDKSD).val() == false) {
+            {{!-- if($(form.dongYDKSD).val() == false) {
                 error.text("Bạn phải đồng ý điều khoản để tiếp tục đăng ký")
                 return false;
+            } --}}
+
+            let dataSend = {
+                hoVaTen: $(form.hoTen).val(),
+                loaiND: $(form.loaiND).val(),
+                tenKhohang: $(form.tenKhoHang).val(),
+                cmnd: $(form.cmnd).val(),
+                sdt: $(form.sdt).val(),
+                userName: $(form.username).val(),
+                email: $(form.email).val(),
+                matKhau: $(form.matKhau).val(),
+                reMatKhau: $(form.reMatKhau).val(),
             }
-            return true;
+
+            $.post('/dang-ky', dataSend, result => {
+                result = JSON.parse(result);
+                if(result.status == "error") {
+                    error.text(result.message);
+                } else {
+                    window.location.href = "/dang-nhap"
+                }
+            })
+            return false;
         }
     </script>
 </body>
