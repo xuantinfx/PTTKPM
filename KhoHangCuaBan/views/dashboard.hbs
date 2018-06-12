@@ -1,136 +1,286 @@
 <div class="container">
   <div class="row mt-5">
-    <div class=" col-md-2">
-      <a href="/kho-hang">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Kho
+    {{#equal tuCach "Chủ kho" }}
+      <div class=" col-md-2">
+        <a href="/kho-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Kho
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/kho-hang.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/kho-hang.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/hang-hoa">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Hàng hoá
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/hang-hoa.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/hang-hoa">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Hàng hoá
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/nhan-vien">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Nhân viên
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/nhan-vien.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/hang-hoa.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/lich-nhap-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Lịch nhập hàng
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/lich-nhap-hang.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/nhan-vien">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Nhân viên
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/lich-xuat-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Lịch xuất hàng
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/lich-xuat-hang.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/nhan-vien.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/don-hang-nhap">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Đơn hàng nhập
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/don-hang-nhap.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/lich-nhap-hang">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Lịch nhập hàng
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/don-hang-xuat">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Đơn hàng xuất
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/don-hang-xuat.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/lich-nhap-hang.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="#">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Báo cáo
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/bao-cao.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/lich-xuat-hang">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Lịch xuất hàng
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="#">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Thống kê
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/thong-ke.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/lich-xuat-hang.png" alt="">
+        </a>
+      </div>
+      {{!-- <div class=" col-md-2">
+        <a href="/bieu-do">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Biểu đồ
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/bieu-do.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/don-hang-nhap">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Đơn hàng nhập
+        </a>
+      </div> --}}
+      <div class=" col-md-2">
+        <a href="#">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Quản lý TK
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/quan-ly-tai-khoan.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/don-hang-nhap.png" alt="">
+        </a>
+      </div>
+      {{/equal}}
+      {{#equal tuCach "Quản lý" }}
+      <div class=" col-md-2">
+        <a href="/kho-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Kho
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/kho-hang.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/don-hang-xuat">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Đơn hàng xuất
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/hang-hoa">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Hàng hoá
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/hang-hoa.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/don-hang-xuat.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/nhan-vien">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Nhân viên
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/nhan-vien.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/bao-cao">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Báo cáo
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/lich-nhap-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Lịch nhập hàng
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/lich-nhap-hang.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/bao-cao.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/lich-xuat-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Lịch xuất hàng
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/lich-xuat-hang.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/thong-ke">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Thống kê
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/don-hang-nhap">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Đơn hàng nhập
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/don-hang-nhap.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/thong-ke.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/don-hang-xuat">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Đơn hàng xuất
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/don-hang-xuat.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/bieu-do">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Biểu đồ
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="#">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Báo cáo
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/bao-cao.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/bieu-do.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="#">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Thống kê
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/thong-ke.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class=" col-md-2">
-      <a href="/quan-ly-tai-khoan">
-        <div class="card hover-boder">
-          <div class="card-header">
-            Quản lý TK
+        </a>
+      </div>
+      {{/equal}}
+      {{#equal tuCach "Nhân viên" }}
+      <div class=" col-md-2">
+        <a href="/hang-hoa">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Hàng hoá
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/hang-hoa.png" alt="">
+            </div>
           </div>
-          <div class="card-body">
-            <img class="icon" src="/images/quan-ly-tai-khoan.png" alt="">
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/lich-nhap-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Lịch nhập hàng
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/lich-nhap-hang.png" alt="">
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
+      <div class=" col-md-2">
+        <a href="/lich-xuat-hang">
+          <div class="card hover-boder">
+            <div class="card-header">
+              Lịch xuất hàng
+            </div>
+            <div class="card-body">
+              <img class="icon" src="/images/lich-xuat-hang.png" alt="">
+            </div>
+          </div>
+        </a>
+      </div>
+      {{/equal}}
   </div>
 </div>

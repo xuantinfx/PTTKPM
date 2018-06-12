@@ -8,8 +8,8 @@ var xacThucController = require('../controller/xacThucController');
 var router = express.Router();
 
 //ĐĂNG NHẬP
-router.get('/dang-nhap', function (req, res, next) {
-  if (req.isAuthenticated()) res.redirect('/');
+router.get('/dang-nhap', xacThucController.chuaDangNhap, function (req, res, next) {
+  if (req.isAuthenticated()) res.redirect('/dashboard');
   else next();
 }, function (req, res, next) {
   res.render('dangnhap', {
@@ -22,34 +22,26 @@ router.post('/dang-nhap', nguoiDungController.dangNhap);
 //ĐĂNG XUẤT
 router.post('/dang-xuat', xacThucController.daDangNhap, nguoiDungController.dangXuat);
 
-//TRANG CHỦ
-router.get('/', function (req, res, next) {
-  res.render('dashboard', {
-    title: 'Dashboard',
-    dashboard: true
-  });
-});
-
 //NGƯỜI DÙNG
 router.get('/nguoi-dung/lay-thong-tin-trong-session', nguoiDungController.layThongTinNguoiDungTrongSession);
 
 //KHO HÀNG
-router.get('/kho-hang', khoHangController.xem);
+router.get('/kho-hang', xacThucController.daDangNhap, xacThucController.laQuanLy, khoHangController.xem);
 
 router.post('kho-hang/them', (req, res) => {
   res.end('Đã vào route thêm');
 })
 
 router.get('/kho-hang/xoa', function (req, res, next) {
-  res.send('respond with a resource');
+  res.redirect("/kho-hang")
 });
 
 router.get('/kho-hang/sua', function (req, res, next) {
-  res.send('respond with a resource');
+  res.redirect("/kho-hang")
 });
 
 //ĐƠN HÀNG XUẤT
-router.get('/don-hang-xuat', donHangXuatController.xem);
+router.get('/don-hang-xuat', xacThucController.daDangNhap, xacThucController.laQuanLy, donHangXuatController.xem);
 
 router.get('/don-hang-xuat/lay-option-ds-mat-hang-da-nhap', donHangXuatController.layDsMatHangDaNhap);
 
@@ -58,9 +50,17 @@ router.post('/don-hang-xuat/them', donHangXuatController.themDonHangXuat);
 
 
 //BÁO CÁO
-router.get('/bao-cao', (req, res, next) => {
+router.get('/bao-cao', xacThucController.daDangNhap, xacThucController.laQuanLy, (req, res, next) => {
+  let tuCach = ""
+  if (req.user.loaiNguoiDung == 'CK') {
+    tuCach = 'Chủ kho'
+  } else {
+    tuCach = 'Quản lý'
+  }
   res.render('baocao', {
-    baoCao: true
+    baoCao: true,
+    tuCach,
+    user: req.user
   });
 })
 
