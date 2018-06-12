@@ -398,10 +398,11 @@ CREATE PROCEDURE `sp_InsertNguoiDung`(
     IN sdt TEXT, 
     IN email TEXT,
     IN tenTaiKhoan TEXT,
-    IN matKhau TEXT
+    IN matKhau TEXT,
+    IN laTaiKhoanMoi TEXT
 )
 BEGIN
-	INSERT INTO NguoiDung value (maNguoiDung, hoTen, cmnd, sdt, email, tenTaiKhoan, matKhau, 'true');
+	INSERT INTO NguoiDung VALUE (maNguoiDung, hoTen, cmnd, sdt, email, tenTaiKhoan, matKhau, laTaiKhoanMoi);
 END $$
 
 DELIMITER ;
@@ -419,7 +420,7 @@ CREATE PROCEDURE `sp_InsertChuKho`(
 	IN maNguoiDung VARCHAR(10)
 )
 BEGIN
-	INSERT INTO ChuKhoHang value (maNguoiDung);
+	INSERT INTO ChuKhoHang VALUE (maNguoiDung);
 END $$
 
 DELIMITER ;
@@ -438,7 +439,63 @@ CREATE PROCEDURE `sp_InsertNhanVien`(
 	IN maNguoiDung VARCHAR(10)
 )
 BEGIN
-	INSERT INTO NhanVien value (maNhanVien, maNguoiDung);
+	INSERT INTO NhanVien VALUE (maNhanVien, maNguoiDung);
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- lay ds nguoi dung chua kich hoat
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_getNguoiDungChuaKichHoat` $$
+CREATE PROCEDURE `sp_getNguoiDungChuaKichHoat`(
+)
+BEGIN
+	SELECT * FROM NguoiDung WHERE laTaiKhoanMoi = 'true';
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+
+-- them moi nhan vien
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_getMaNV` $$
+CREATE PROCEDURE `sp_getMaNV`(
+	IN userName VARCHAR(10)
+)
+BEGIN
+	SELECT NhanVien.maNhanVien FROM NguoiDung JOIN NhanVien ON NguoiDung.maNguoiDung = NhanVien.maNguoiDung WHERE NguoiDung.tenTaiKhoan = userName ;
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- add Quan ly vao kho
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertQLVaoKho` $$
+CREATE PROCEDURE `sp_InsertQLVaoKho`(
+	IN maNhanVien VARCHAR(10),
+	IN maKhoHang VARCHAR(10),
+    IN maChuKho VARCHAR(10)
+)
+BEGIN
+	INSERT INTO QuanLy VALUE (maNhanVien, maChuKho);
+    UPDATE KhoHang SET quanLy = maNhanVien WHERE KhoHang.maKhoHang = maKhoHang;
 END $$
 
 DELIMITER ;

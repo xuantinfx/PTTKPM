@@ -22,10 +22,10 @@ module.exports.layNguoiDungBangEmail = (connection, email) => {
     })
 }
 
-module.exports.insertNguoiDung = (connection, maNguoiDung, hoTen, cmnd, sdt, email, tenTaiKhoan, matKhau) => {
+module.exports.insertNguoiDung = (connection, maNguoiDung, hoTen, cmnd, sdt, email, tenTaiKhoan, matKhau, laTaiKhoanMoi) => {
     return new Promise((resole, reject) => {
         connection.query({
-            sql: `call sp_InsertNguoiDung('${maNguoiDung}', '${hoTen}', '${cmnd}', '${sdt}', '${email}', '${tenTaiKhoan}', '${matKhau}')`,
+            sql: `call sp_InsertNguoiDung('${maNguoiDung}', '${hoTen}', '${cmnd}', '${sdt}', '${email}', '${tenTaiKhoan}', '${matKhau}', '${laTaiKhoanMoi}')`,
             nestTables: false
         }, (err, data) => {
             if(err) return reject(err);
@@ -46,4 +46,25 @@ module.exports.insertNhanVien = (connection, maNhanVien, maNguoiDung) => {
         sql: `call sp_InsertNhanVien('${maNhanVien}', '${maNguoiDung}')`,
         nestTables: false
     })
+}
+
+module.exports.getMaNhanVien = (connection, userName, cb) => {
+    connection.query({
+        sql: `call sp_getMaNV('${userName}')`,
+        nestTables: false
+    }, cb)
+}
+
+module.exports.insertQuanLy = (connection, maNhanVien, maKhoHang, maChuKho, cb) => {
+    connection.query({
+        sql: `call sp_InsertQLVaoKho('${maNhanVien}', '${maKhoHang}', '${maChuKho}')`,
+        nestTables: false
+    },cb)
+}
+
+module.exports.getNguoiDungChuaKichHoat = (connection, cb) => {
+    connection.query({
+        sql: `call sp_getNguoiDungChuaKichHoat()`,
+        nestTables: false
+    },cb)
 }

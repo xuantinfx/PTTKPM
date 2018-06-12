@@ -86,8 +86,15 @@ module.exports.postDangKy = (req, res, next) => {
     .then(() => {
         //du no la ai cung phai insert nguoi dung
         //chỗ này chơi bậy bậy tí, random 1 - 10.000.000 lấy đem làm mã, xui thì dính, tại lười lấy mã ra để xử lí
+        let nguoiDungMoi = ""
+        if(loaiND == "CK") {
+            nguoiDungMoi = "false";
+        }
+        else {
+            nguoiDungMoi = "true";
+        }
         let maNguoiDung = Math.round(Math.random() * 10000000)
-        nguoiDungModel_tin.insertNguoiDung(req.connectionToDB, maNguoiDung, hoVaTen, cmnd, sdt, email, userName, matKhau)
+        nguoiDungModel_tin.insertNguoiDung(req.connectionToDB, maNguoiDung, hoVaTen, cmnd, sdt, email, userName, matKhau, nguoiDungMoi)
         .then(() => {
             //kiểm tra xem có là chủ kho hay nhân viên
             //Là chủ kho

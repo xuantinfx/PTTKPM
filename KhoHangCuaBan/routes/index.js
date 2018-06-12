@@ -53,6 +53,8 @@ router.get('/hang-hoa', controller_hanghoa_tin.getHangHoa);
 //Nhan vien
 //giả sử route này quản lí mới vào được
 router.get('/nhan-vien', xacThucController.daDangNhap, xacThucController.laQuanLy, controller_nhanvien_tin.getNhanVien);
+router.post('/nhan-vien/kiem-tra-nhan-vien-moi', controller_nhanvien_tin.postKiemTraNhanVienMoi)
+router.post('/nhan-vien/them-nhan-vien', controller_nhanvien_tin.postThemNhanVien)
 //kiem tra xem user co ton tai hay k
 router.get('/kiem-tra-user-ton-tai', nguoiDungController_tin.getKiemTraUserTonTai);
 router.get('/dang-ky', nguoiDungController_tin.getDangKy)
