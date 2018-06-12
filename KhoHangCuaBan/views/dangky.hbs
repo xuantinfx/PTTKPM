@@ -56,21 +56,6 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 offset-md-6">
-                                    <div class="form-group">
-                                        <label for="">Tên kho hàng</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="chukho">
-                                                    <i class="far fa-hand-point-right"></i>
-                                                </span>
-                                            </div>
-                                            <input type="text" name="tenKhoHang" class="form-control" placeholder="Nhập tên kho hàng">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="cmnd">Nhập số chứng minh nhân dân</label>
@@ -261,7 +246,12 @@
             }
 
             $.post('/dang-ky', dataSend, result => {
-                console.log(result)
+                result = JSON.parse(result);
+                if(result.status == "error") {
+                    error.text(result.message);
+                } else {
+                    window.location.href = "/dang-nhap"
+                }
             })
             return false;
         }

@@ -367,3 +367,82 @@ DELIMITER ;
 -- ---------------------------------------------------------------------
 -- ---------------------------------------------------------------------
 -- ---------------------------------------------------------------------
+
+-- kiem tra tai khoan da ton tai chua
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_layNguoiDungBangEmail` $$
+CREATE PROCEDURE `sp_layNguoiDungBangEmail`(
+	IN email TEXT
+)
+BEGIN
+	SELECT * FROM NguoiDung WHERE NguoiDung.email = email;
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- them moi nguoi dung
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertNguoiDung` $$
+CREATE PROCEDURE `sp_InsertNguoiDung`(
+	IN maNguoiDung TEXT,
+    IN hoTen TEXT,
+    IN cmnd TEXT,
+    IN sdt TEXT, 
+    IN email TEXT,
+    IN tenTaiKhoan TEXT,
+    IN matKhau TEXT
+)
+BEGIN
+	INSERT INTO NguoiDung value (maNguoiDung, hoTen, cmnd, sdt, email, tenTaiKhoan, matKhau, 'true');
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- them moi chu kho
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertChuKho` $$
+CREATE PROCEDURE `sp_InsertChuKho`(
+	IN maNguoiDung VARCHAR(10)
+)
+BEGIN
+	INSERT INTO ChuKhoHang value (maNguoiDung);
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
+-- them moi nhan vien
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertNhanVien` $$
+CREATE PROCEDURE `sp_InsertNhanVien`(
+	IN maNhanVien VARCHAR(10),
+	IN maNguoiDung VARCHAR(10)
+)
+BEGIN
+	INSERT INTO NhanVien value (maNhanVien, maNguoiDung);
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
