@@ -1,33 +1,77 @@
-
-    <div class="container mt-3">
-        <div class="row">
-            <h1 class="col-lg-4">Kho hàng</h1>             
-            <button class="btn btn-success h-50 my-auto">Thêm</button>
+<div class="modal fade" id="modalTaoKhoHang" tabindex="-1" role="dialog" aria-labelledby="modalThemDonHangNhap" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold" id="labelThemDonHangNhap">Tạo kho hàng mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <!--Gắn form vào đây-->
+                    <div class="row">
+                        <div class="col-sm-8 offset-sm-2">
+                            <form action="/kho-hang/tao-kho-hang" method="POST" id="formTaoKhoHang">
+                                <div class="form-group">
+                                    <label for="tenKho">Nhập tên kho hàng</label>
+                                    <input required type="text" class="form-control" name="tenKho" id="tenKho" aria-describedby="tenKhoHang" placeholder="Nhập tên kho hàng">
+                                    <small id="tenKhoHang" class="form-text text-muted">Nhập tên kho hàng muốn chọn</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="diaChi">Nhập địa chỉ</label>
+                                    <input required type="text" class="form-control" name="diaChi" id="diaChi" aria-describedby="diaChiKho" placeholder="Nhập địa chỉ kho hàng">
+                                    <small id="diaChiKho" class="form-text text-muted">Nhập địa chỉ kho hàng</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="moTa">Nhập mô tả</label>
+                                    <input required type="text" class="form-control" name="moTa" id="moTa" aria-describedby="moTaKho" placeholder="Nhập mô tả kho hàng">
+                                    <small id="moTaKho" class="form-text text-muted">Nhập mô tả kho hàng</small>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="submit" form="formTaoKhoHang" class="btn btn-success" id="btnXacNhanThem">Tạo kho hàng</button>
+            </div>
         </div>
-        {{#each khoHang}}
-        <div class="card row mt-3 mx-auto">
-            <h4 class="card-header">
-                {{tenKhoHang}}
-            </h4>
-            <form class="card-body">
-                <div class="form-group">
-                    <h5 class="card-title">Mã số kho</h5>
-                    <input class="form-control" value={{maKhoHang}} disabled></input>
-                </div>
-                <div class="form-group">
-                    <h5 class="card-title">Địa chỉ kho</h5>
-                    <input class="form-control" value="{{diaChi}}" disabled></input>
-                </div>
-                <div class="form-group">
-                    <h5 class="card-title">Mô tả</h5>
-                    <textarea class="form-control" disabled>{{moTa}}</textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success">Chỉnh sửa</button>
-                    <button class="btn btn-danger">Xóa</button>
-                </div>
-            </form>
-        </div>
-        {{/each}}
-
     </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <h1 class="col-lg-5 text-dark pl-4">Kho hàng</h1>
+        <div class="col-lg-7 row justify-content-end pr-0">
+            <button class="btn btn-success col-4 my-1" type="button" data-toggle="modal" data-target="#modalTaoKhoHang" id="">Thêm kho hàng mới</button>
+        </div>
+    </div>
+    {{#each khoHang}}
+    <div class="card row mt-3 mx-auto">
+        <h4 class="card-header">
+            {{tenKhoHang}}
+        </h4>
+        <form class="card-body">
+            <div class="form-group">
+                <h5 class="card-title">Mã số kho</h5>
+                <input class="form-control" value={{maKhoHang}} disabled></input>
+            </div>
+            <div class="form-group">
+                <h5 class="card-title">Địa chỉ kho</h5>
+                <input class="form-control" value="{{diaChi}}" disabled></input>
+            </div>
+            <div class="form-group">
+                <h5 class="card-title">Mô tả</h5>
+                <textarea class="form-control" disabled>{{moTa}}</textarea>
+            </div>
+            {{!--
+            <div class="form-group">
+                <button class="btn btn-success">Chỉnh sửa</button>
+                <button class="btn btn-danger">Xóa</button>
+            </div> --}}
+        </form>
+    </div>
+    {{/each}}
+
+</div>

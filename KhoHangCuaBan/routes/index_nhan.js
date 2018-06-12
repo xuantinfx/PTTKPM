@@ -26,11 +26,9 @@ router.post('/dang-xuat', xacThucController.daDangNhap, nguoiDungController.dang
 router.get('/nguoi-dung/lay-thong-tin-trong-session', nguoiDungController.layThongTinNguoiDungTrongSession);
 
 //KHO HÀNG
-router.get('/kho-hang', xacThucController.daDangNhap, xacThucController.laQuanLy, khoHangController.xem);
+router.get('/kho-hang', xacThucController.daDangNhap, xacThucController.laChuKho, khoHangController.xem);
 
-router.post('kho-hang/them', (req, res) => {
-  res.end('Đã vào route thêm');
-})
+router.post('/kho-hang/tao-kho-hang', khoHangController.postThemKhoHang)
 
 router.get('/kho-hang/xoa', function (req, res, next) {
   res.redirect("/kho-hang")

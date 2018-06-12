@@ -19,3 +19,16 @@ exports.xem = (req, res) => {
     });
 
 }
+
+exports.postThemKhoHang = (req, res, next) => {
+    let {tenKho, diaChi, moTa} = req.body;
+    console.log(tenKho, diaChi, moTa);
+    let maKhoHang = Math.round(Math.random() * 10000000);
+    khoHangModel.insertKhoHang(req.connectionToDB, maKhoHang, tenKho, diaChi, req.user.maChuKho, moTa, (err, data) => {
+        if(err) console.log(err);
+        req.user.maKho.push(''+maKhoHang);
+        if(req.user.maKho.length == 1)
+            req.user.maKhoHienHanh = ''+maKhoHang;
+        res.redirect("/kho-hang");
+    } )
+}

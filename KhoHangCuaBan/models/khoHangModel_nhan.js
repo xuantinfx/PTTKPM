@@ -36,3 +36,9 @@ exports.layMaKhoTheoMaNhanVienKho = function(req, maNhanVien, callback){
         else callback(null, results[0])
     })
 }
+
+//them kho hang
+exports.insertKhoHang = function(connection, maKhoHang, tenKhoHang, diaChi, chuKho, moTa, callback){
+    connection.query(`CALL sp_InsertKho('${maKhoHang}','${tenKhoHang}','${diaChi}','${chuKho}','${moTa}')`, callback)
+}
+

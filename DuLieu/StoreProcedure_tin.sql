@@ -503,3 +503,26 @@ DELIMITER ;
 -- ---------------------------------------------------------------------
 -- ---------------------------------------------------------------------
 -- ---------------------------------------------------------------------
+
+-- insert kho
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_InsertKho` $$
+CREATE PROCEDURE `sp_InsertKho`(
+	IN maKhoHang VARCHAR(10),
+    IN tenKhoHang TEXT,
+    IN diaChi TEXT,
+    IN chuKho VARCHAR(10),
+    IN moTa TEXT(10)
+)
+BEGIN
+	INSERT INTO KhoHang VALUE (maKhoHang, tenKhoHang, diaChi, chuKho, null, moTa);
+END $$
+
+DELIMITER ;
+
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+
